@@ -12,27 +12,27 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ReservaSilla implements Serializable {
+public class Foto implements Serializable {
 
     @Id
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int codigo;
 
-    @Column(nullable = false)
-    private Double precio;
+    @Column(nullable = false,unique = true)
+    private String url;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Reserva reserva;
+    private Hotel hotel;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Silla silla;
+    private Habitacion habitacion;
 
-    public ReservaSilla(Double precio, Reserva reserva, Silla silla) {
-        this.precio = precio;
-        this.reserva = reserva;
-        this.silla = silla;
+    public Foto(String url, Hotel hotel, Habitacion habitacion) {
+        this.url = url;
+        this.hotel = hotel;
+        this.habitacion = habitacion;
     }
 }

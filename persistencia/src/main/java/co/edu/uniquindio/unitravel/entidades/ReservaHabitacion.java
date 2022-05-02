@@ -12,14 +12,14 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ReservaSilla implements Serializable {
+public class ReservaHabitacion implements Serializable {
 
     @Id
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
+    @EqualsAndHashCode.Include
+    private int id;
 
-    @Column(nullable = false)
+    @Column(precision = 8,scale = 2,nullable = false)
     private Double precio;
 
     @ManyToOne
@@ -28,11 +28,11 @@ public class ReservaSilla implements Serializable {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Silla silla;
+    private Habitacion habitacion;
 
-    public ReservaSilla(Double precio, Reserva reserva, Silla silla) {
+    public ReservaHabitacion(Double precio, Reserva reserva, Habitacion habitacion) {
         this.precio = precio;
         this.reserva = reserva;
-        this.silla = silla;
+        this.habitacion = habitacion;
     }
 }

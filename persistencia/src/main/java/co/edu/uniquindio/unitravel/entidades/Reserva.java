@@ -48,8 +48,11 @@ public class Reserva implements Serializable {
     private Usuario usuario;
 
     @OneToMany(mappedBy = "reserva")
-    //@Column(nullable = false)
+    @JoinColumn(nullable = false)
     private List<ReservaSilla> reservasSilla;
+
+    @OneToMany(mappedBy = "reserva")
+    private List<ReservaHabitacion> reservas;
 
     public Reserva(LocalDate fecha, LocalDate fechaInicio, LocalDate fechaFin, EstadoReserva estado,
                    int cantidadPersonas, Usuario usuario) {

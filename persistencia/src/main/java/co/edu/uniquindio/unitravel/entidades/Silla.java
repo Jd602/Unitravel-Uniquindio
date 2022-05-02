@@ -1,19 +1,18 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@MappedSuperclass
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Silla implements Serializable {
 
     @Id
@@ -29,10 +28,11 @@ public class Silla implements Serializable {
 
 
     @OneToMany(mappedBy = "silla")
-    //@JoinColumn(nullable = false)
+    @JoinColumn(nullable = false)
     private List<ReservaSilla> reservasSilla;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Vuelo vuelo;
 
     public Silla(String posicion, Double precio, List<ReservaSilla> reservasSilla, Vuelo vuelo) {

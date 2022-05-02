@@ -13,8 +13,6 @@ import java.util.Map;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-
-
 public class Persona implements Serializable {
 
     @Id

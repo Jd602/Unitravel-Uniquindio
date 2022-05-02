@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-public enum EstadoVuelo {
+import java.io.Serializable;
+
+public enum EstadoVuelo implements Serializable {
 
     ON_TIME,
     ABORDED,

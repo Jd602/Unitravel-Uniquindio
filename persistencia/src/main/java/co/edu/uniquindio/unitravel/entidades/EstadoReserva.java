@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-public enum EstadoReserva {
+import java.io.Serializable;
+
+public enum EstadoReserva implements Serializable {
 
     CONFIRMADA,
     RECHAZADA,

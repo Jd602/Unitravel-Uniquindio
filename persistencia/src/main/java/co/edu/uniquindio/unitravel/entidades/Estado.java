@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-public enum Estado {
+import java.io.Serializable;
+
+public enum Estado  implements Serializable {
     ACTIVO,
     SUSPENDIDO,
     INACTIVO

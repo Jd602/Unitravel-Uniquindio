@@ -30,11 +30,22 @@ public class Vuelo implements Serializable {
     private String aerolinea;
 
     @OneToMany(mappedBy = "vuelo")
+    @JoinColumn(nullable = false)
     private List<Silla> sillas;
 
-    public Vuelo(EstadoVuelo estado, String aerolinea, List<Silla> sillas) {
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Ciudad origen;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Ciudad destino;
+
+    public Vuelo(EstadoVuelo estado, String aerolinea, List<Silla> sillas, Ciudad origen, Ciudad destino) {
         this.estado = estado;
         this.aerolinea = aerolinea;
         this.sillas = sillas;
+        this.origen = origen;
+        this.destino = destino;
     }
 }
