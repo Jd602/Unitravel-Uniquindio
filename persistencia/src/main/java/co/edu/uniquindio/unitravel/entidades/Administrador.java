@@ -5,15 +5,13 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Map;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Administrador extends Persona implements Serializable {
 
     @Column(nullable = false)
@@ -25,14 +23,12 @@ public class Administrador extends Persona implements Serializable {
     @Column(nullable = false)
     private Estado estado;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Ciudad ciudad;
-
     public Administrador(String cedula, String nombre, String correo, String password,
-                         LocalDate fechaIngreso, Estado estado) {
-        super(cedula, nombre, correo, password);
-        this.fechaIngreso=fechaIngreso;
-        this.estado=estado;
+                         Map<String, String> telefono, LocalDate fechaIngreso, LocalDate fechaRetiro,
+                         Estado estado) {
+        super(cedula, nombre, correo, password, telefono);
+        this.fechaIngreso = fechaIngreso;
+        this.fechaRetiro = fechaRetiro;
+        this.estado = estado;
     }
 }
