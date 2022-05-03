@@ -18,7 +18,7 @@ public class Hotel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private int id;
+    private int codigo;
 
     @Column(nullable = false,length = 30)
     private String nombre;
@@ -47,11 +47,17 @@ public class Hotel implements Serializable {
     @OneToMany(mappedBy = "hotel")
     private List<Comentario> comentarios;
 
-    public Hotel(String nombre, String direccion, Estrella numEstrellas, AdminHotel administrador, Ciudad ciudad) {
+    public Hotel(String nombre, String direccion, Estrella numEstrellas, AdminHotel administrador,
+                 Ciudad ciudad, List<Foto> fotos, List<Caracteristica> caracteristicas,
+                 List<Habitacion> habitaciones, List<Comentario> comentarios) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.numEstrellas = numEstrellas;
         this.administrador = administrador;
         this.ciudad = ciudad;
+        this.fotos = fotos;
+        this.caracteristicas = caracteristicas;
+        this.habitaciones = habitaciones;
+        this.comentarios = comentarios;
     }
 }

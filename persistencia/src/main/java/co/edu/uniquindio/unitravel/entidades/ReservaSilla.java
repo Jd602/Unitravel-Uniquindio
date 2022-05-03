@@ -23,11 +23,11 @@ public class ReservaSilla implements Serializable {
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    //@JoinColumn(nullable = false)
     private Reserva reserva;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    //@JoinColumn(nullable = false)
     private Silla silla;
 
     public ReservaSilla(Double precio, Reserva reserva, Silla silla) {

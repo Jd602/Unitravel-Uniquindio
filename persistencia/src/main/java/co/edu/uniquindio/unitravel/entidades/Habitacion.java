@@ -44,9 +44,8 @@ public class Habitacion implements Serializable {
     @ManyToMany(mappedBy = "habitaciones")
     private List<Cama> camas;
 
-    public Habitacion(String numero, Double precio, int capacidad, Hotel hotel,
-                      List<Caracteristica> caracteristicas, List<Foto> fotos,
-                      List<ReservaHabitacion> reservas, List<Cama> camas) {
+    public Habitacion(String numero, Double precio, int capacidad, Hotel hotel, List<Caracteristica> caracteristicas,
+                      List<Foto> fotos, List<ReservaHabitacion> reservas, List<Cama> camas) {
         this.numero = numero;
         this.precio = precio;
         this.capacidad = capacidad;

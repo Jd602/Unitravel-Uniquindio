@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -15,6 +12,8 @@ import java.util.ListIterator;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@MappedSuperclass
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
