@@ -1,0 +1,58 @@
+[33mcommit 4cd69401ea902016aea7b7a0dd613d63ac06715b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: jd602 <juand.sarazan@uqvirtual.edu.co>
+Date:   Tue May 3 01:22:56 2022 -0500
+
+    Revert "Se crean la mitad de las entidades y sus llaves foráneas"
+    
+    This reverts commit 38117f1fca604ed411ae60507981bf07ab481f70.
+    
+    # Conflicts:
+    #       .gradle/7.4/executionHistory/executionHistory.bin
+    #       .gradle/7.4/executionHistory/executionHistory.lock
+    #       .gradle/7.4/fileHashes/fileHashes.bin
+    #       .gradle/7.4/fileHashes/fileHashes.lock
+    #       .gradle/7.4/fileHashes/resourceHashesCache.bin
+    #       .gradle/buildOutputCleanup/buildOutputCleanup.lock
+    #       .gradle/file-system.probe
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/AdminHotel.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Administrador.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Ciudad.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Estado.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/EstadoReserva.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/EstadoVuelo.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Persona.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Reserva.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/ReservaSilla.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Silla.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Usuario.java
+    #       persistencia/src/main/java/co/edu/uniquindio/unitravel/entidades/Vuelo.java
+
+[33mcommit 70e81a573f34189cd8ca27c53f74a82c4fa49b0f[m
+Author: jd602 <juand.sarazan@uqvirtual.edu.co>
+Date:   Mon May 2 03:21:07 2022 -0500
+
+    Se agregaron las entidades restantes
+
+[33mcommit 38117f1fca604ed411ae60507981bf07ab481f70[m
+Author: jd602 <juand.sarazan@uqvirtual.edu.co>
+Date:   Fri Apr 29 11:08:23 2022 -0500
+
+    Se crean la mitad de las entidades y sus llaves foráneas
+
+[33mcommit 791789b8b602372b027c081bae6524642b34d195[m
+Author: jd602 <juand.sarazan@uqvirtual.edu.co>
+Date:   Wed Apr 27 07:20:47 2022 -0500
+
+    Se borran los archivos ignorados por git
+
+[33mcommit 2d4f7f701c684607dd8dab3c9e600662eb639cb1[m
+Author: jd602 <juand.sarazan@uqvirtual.edu.co>
+Date:   Wed Apr 27 07:16:27 2022 -0500
+
+    Entidades persona y telefono, gitignore
+
+[33mcommit 0f235e269d2d7696eaa78c57b50045001a1d200d[m
+Author: jd602 <juand.sarazan@uqvirtual.edu.co>
+Date:   Wed Apr 27 05:20:22 2022 -0500
+
+    Configuración inicial del proyecto

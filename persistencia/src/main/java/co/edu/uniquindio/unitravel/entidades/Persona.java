@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,6 +17,9 @@ import java.util.Objects;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+=======
+@Entity
+>>>>>>> parent of 38117f1 (Se crean la mitad de las entidades y sus llaves foráneas)
 =======
 @Entity
 >>>>>>> parent of 38117f1 (Se crean la mitad de las entidades y sus llaves foráneas)
