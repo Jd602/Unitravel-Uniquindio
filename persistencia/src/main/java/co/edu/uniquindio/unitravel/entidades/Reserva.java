@@ -50,12 +50,12 @@ public class Reserva implements Serializable {
     //@JoinColumn(nullable = false)
     private List<ReservaSilla> reservasSilla;
 
-    //@OneToMany(mappedBy = "reserva")
-    //private List<ReservaHabitacion> reservas;
-
+    @OneToMany(mappedBy = "reserva")
+    private List<ReservaHabitacion> reservas;
 
     public Reserva(LocalDate fecha, LocalDate fechaInicio, LocalDate fechaFin, EstadoReserva estado,
-                   Double precioTotal, int cantidadPersonas, Usuario usuario, List<ReservaSilla> reservasSilla) {
+                   Double precioTotal, int cantidadPersonas, Usuario usuario, List<ReservaSilla> reservasSilla,
+                   List<ReservaHabitacion> reservas) {
         this.fecha = fecha;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -64,6 +64,7 @@ public class Reserva implements Serializable {
         this.cantidadPersonas = cantidadPersonas;
         this.usuario = usuario;
         this.reservasSilla = reservasSilla;
+        this.reservas = reservas;
     }
 }
 

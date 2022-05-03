@@ -12,29 +12,29 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Ciudad implements Serializable {
+public class Caracteristica implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private int id;
+    private int codigo;
 
-    @Column(length=30,nullable=false)
+    @Column(length =30 )
     private String nombre;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Usuario> usuarios;
+    @Column(nullable = false)
+    private String descripcion;
 
-    @OneToMany(mappedBy = "ciudad")
+    @ManyToMany
     private List<Hotel> hoteles;
 
-    @OneToMany(mappedBy = "origen")
-    private List<Vuelo> vuelos;
+    @ManyToMany
+    private List<Habitacion> habitaciones;
 
-    public Ciudad(String nombre, List<Usuario> usuarios, List<Hotel> hoteles, List<Vuelo> vuelos) {
+    public Caracteristica(String nombre, String descripcion, List<Hotel> hoteles, List<Habitacion> habitaciones) {
         this.nombre = nombre;
-        this.usuarios = usuarios;
+        this.descripcion = descripcion;
         this.hoteles = hoteles;
-        this.vuelos = vuelos;
+        this.habitaciones = habitaciones;
     }
 }
