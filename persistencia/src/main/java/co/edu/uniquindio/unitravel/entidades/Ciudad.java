@@ -28,12 +28,12 @@ public class Ciudad implements Serializable {
     //@OneToMany(mappedBy = "ciudad")
     //private List<Hotel> hoteles;
 
-    //@OneToMany(mappedBy = "origen,destino")
-    //private List<Vuelo> vuelos;
+    @OneToMany(mappedBy = "origen")
+    private List<Vuelo> vuelos;
 
-
-    public Ciudad(String nombre, List<Usuario> usuarios) {
+    public Ciudad(String nombre, List<Usuario> usuarios, List<Vuelo> vuelos) {
         this.nombre = nombre;
         this.usuarios = usuarios;
+        this.vuelos = vuelos;
     }
 }
