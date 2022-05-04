@@ -13,7 +13,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+// @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario extends Persona implements Serializable {
 
     @ManyToOne
@@ -26,12 +26,8 @@ public class Usuario extends Persona implements Serializable {
     private List<Comentario> comentarios;
 
 
-    public Usuario(String cedula, String nombre, String correo, String password,
-                   Map<String, String> telefono, Ciudad ciudad, List<Reserva> reservas,
-                   List<Comentario> comentarios) {
-        super(cedula, nombre, correo, password, telefono);
-        this.ciudad = ciudad;
-        this.reservas = reservas;
-        this.comentarios = comentarios;
+    public Usuario(String cedula, String nombre, String correo, String password) {
+        super(cedula, nombre, correo, password);
+
     }
 }

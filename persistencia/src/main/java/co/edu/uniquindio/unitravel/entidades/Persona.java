@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 
@@ -34,13 +35,12 @@ public class Persona implements Serializable {
 
     @ElementCollection
     @Column(nullable = false)
-    private Map<String,String> telefono;
+    private List<String> telefono;
 
-    public Persona(String cedula, String nombre, String correo, String password, Map<String, String> telefono) {
+    public Persona(String cedula, String nombre, String correo, String password) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
-        this.telefono = telefono;
     }
 }

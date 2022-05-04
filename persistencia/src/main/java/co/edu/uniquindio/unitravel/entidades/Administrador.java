@@ -26,7 +26,7 @@ public class Administrador extends Persona implements Serializable {
     public Administrador(String cedula, String nombre, String correo, String password,
                          Map<String, String> telefono, LocalDate fechaIngreso, LocalDate fechaRetiro,
                          Estado estado) {
-        super(cedula, nombre, correo, password, telefono);
+        super(cedula, nombre, correo, password);
         this.fechaIngreso = fechaIngreso;
         this.fechaRetiro = fechaRetiro;
         this.estado = estado;
