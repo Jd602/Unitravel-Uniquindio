@@ -55,7 +55,7 @@ public class AdministradorTest {
     @Test
     public void listarAdministradorTest()
     {
-        List<administrador> lista = administradorRepo.findAll();
+        List<Administrador> lista = administradorRepo.findAll();
         System.out.println(lista);
     }
 }

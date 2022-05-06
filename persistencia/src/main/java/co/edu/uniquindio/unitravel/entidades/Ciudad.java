@@ -16,9 +16,9 @@ public class Ciudad implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
     private int id;
 
+    @EqualsAndHashCode.Include
     @Column(length=30,nullable=false)
     private String nombre;
 
@@ -31,10 +31,7 @@ public class Ciudad implements Serializable {
     @OneToMany(mappedBy = "origen")
     private List<Vuelo> vuelos;
 
-    public Ciudad(String nombre, List<Usuario> usuarios, List<Hotel> hoteles, List<Vuelo> vuelos) {
+    public Ciudad(String nombre) {
         this.nombre = nombre;
-        this.usuarios = usuarios;
-        this.hoteles = hoteles;
-        this.vuelos = vuelos;
     }
 }

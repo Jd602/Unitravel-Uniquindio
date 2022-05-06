@@ -47,17 +47,15 @@ public class Hotel implements Serializable {
     @OneToMany(mappedBy = "hotel")
     private List<Comentario> comentarios;
 
-    public Hotel(String nombre, String direccion, Estrella numEstrellas, AdminHotel administrador,
+    public Hotel(String nombre, String direccion, Estrella numEstrellas,
                  Ciudad ciudad, List<Foto> fotos, List<Caracteristica> caracteristicas,
-                 List<Habitacion> habitaciones, List<Comentario> comentarios) {
+                 List<Habitacion> habitaciones) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.numEstrellas = numEstrellas;
-        this.administrador = administrador;
         this.ciudad = ciudad;
         this.fotos = fotos;
         this.caracteristicas = caracteristicas;
         this.habitaciones = habitaciones;
-        this.comentarios = comentarios;
     }
 }

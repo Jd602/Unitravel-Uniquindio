@@ -45,15 +45,13 @@ public class Habitacion implements Serializable {
     private List<Cama> camas;
 
     public Habitacion(String numero, Double precio, int capacidad, Hotel hotel,
-                      List<Caracteristica> caracteristicas, List<Foto> fotos,
-                      List<ReservaHabitacion> reservas, List<Cama> camas) {
+                      List<Caracteristica> caracteristicas, List<Foto> fotos, List<Cama> camas) {
         this.numero = numero;
         this.precio = precio;
         this.capacidad = capacidad;
         this.hotel = hotel;
         this.caracteristicas = caracteristicas;
         this.fotos = fotos;
-        this.reservas = reservas;
         this.camas = camas;
     }
 }

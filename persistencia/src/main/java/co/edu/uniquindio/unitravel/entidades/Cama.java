@@ -26,8 +26,7 @@ public class Cama implements Serializable {
     @JoinColumn(nullable = false)
     private List<Habitacion> habitaciones;
 
-    public Cama(TipoCama tipo, List<Habitacion> habitaciones) {
+    public Cama(TipoCama tipo) {
         this.tipo = tipo;
-        this.habitaciones = habitaciones;
     }
 }
