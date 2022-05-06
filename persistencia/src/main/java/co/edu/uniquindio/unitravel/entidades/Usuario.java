@@ -6,14 +6,13 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
+
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-// @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario extends Persona implements Serializable {
 
     @ManyToOne

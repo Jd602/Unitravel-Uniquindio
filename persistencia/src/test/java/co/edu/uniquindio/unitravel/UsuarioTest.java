@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UsuarioTest {
@@ -16,11 +18,44 @@ public class UsuarioTest {
     private UsuarioRepo usuarioRepo;
 
     @Test
-    public void registrar()
+    public void registrarUsuarioTest()
     {
         Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
         Usuario usuarioGuardado = usuarioRepo.save(usuario);
 
         Assertions.assertNotNull(usuarioGuardado);
+    }
+
+    @Test
+    public void eliminarUsuarioTest()
+    {
+        Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
+        Usuario usuarioGuardado = usuarioRepo.save(usuario);
+
+        usuarioRepo.delete(usuarioGuardado);
+
+        Usuario usuarioBuscado = usuarioRepo.findById("1010118570").orElse(null);
+        Assertions.assertNull(usuarioBuscado);
+    }
+
+    @Test
+    public void actualizarUsuarioTest()
+    {
+        Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
+        Usuario usuarioGuardado = usuarioRepo.save(usuario);
+
+        usuarioGuardado.setNombre("Sebas");
+
+        usuarioRepo.save(usuarioGuardado);
+
+        Usuario usuarioBuscado = usuarioRepo.findById("1010118570").orElse(null);
+        Assertions.assertEquals("Sebas", usuarioBuscado.getNombre());
+    }
+
+    @Test
+    public void listarUsuariosTest()
+    {
+        List<Usuario> lista = usuarioRepo.findAll();
+        System.out.println(lista);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 @Getter
 @Setter
