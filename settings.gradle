@@ -1,4 +1,0 @@
-rootProject.name = 'unitravel'
-include 'persistencia'
-include 'test'
-
