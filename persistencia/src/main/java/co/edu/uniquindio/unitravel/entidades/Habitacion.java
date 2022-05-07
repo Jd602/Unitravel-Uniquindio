@@ -10,26 +10,35 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true)
 public class Habitacion implements Serializable {
 
     @Id
     @Column(length = 5)
+    @ToString.Include
     private String numero;
 
     @Column(precision = 8,scale = 2,nullable = false)
+    @ToString.Include
     private Double precio;
 
     @Min(1)
     @Max(8)
     @Column(nullable = false)
+    @ToString.Include
     private int capacidad;
 
-    @ManyToOne
+
+    @ToString.Include
     @JoinColumn(nullable = false)
+    private EstadoHabitacion estado;
+
+    @ManyToOne
+    @JoinColumn(nullable = true)
     private Hotel hotel;
 
     @ManyToMany
@@ -44,14 +53,10 @@ public class Habitacion implements Serializable {
     @ManyToMany(mappedBy = "habitaciones")
     private List<Cama> camas;
 
-    public Habitacion(String numero, Double precio, int capacidad, Hotel hotel,
-                      List<Caracteristica> caracteristicas, List<Foto> fotos, List<Cama> camas) {
+    public Habitacion(String numero, Double precio, int capacidad, EstadoHabitacion estado) {
         this.numero = numero;
         this.precio = precio;
         this.capacidad = capacidad;
-        this.hotel = hotel;
-        this.caracteristicas = caracteristicas;
-        this.fotos = fotos;
-        this.camas = camas;
+        this.estado = estado;
     }
 }

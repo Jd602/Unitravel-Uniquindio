@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unitravel;
 
-import co.edu.uniquindio.unitravel.entidades.Administrador;
 import co.edu.uniquindio.unitravel.entidades.Ciudad;
 import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import org.junit.jupiter.api.Assertions;
@@ -52,7 +51,7 @@ public class CiudadTest {
     }
 
     @Test
-    @Sql("classpath:ciudad.sql")
+    //@Sql("classpath:hotel.sql")
     public void listarCiurTest()
     {
         List<Ciudad> lista = ciudadRepo.findAll();
