@@ -1,0 +1,10 @@
+insert into usuario (cedula,nombre,correo,password) values ("1111", "Ana Perez", "anape@gmail.com", "12345");
+insert into usuario (cedula,nombre,correo,password) values ("1112", "Jhon Arango", "jarango@gmail.com", "uyn6oer");
+insert into usuario (cedula,nombre,correo,password) values ("1113", "Julian Ramirez", "julir@gmail.com", "70984");
+insert into usuario (cedula,nombre,correo,password) values ("1114", "Carlos Sosa", "carsosa@gmail.com", "nyiut");
+insert into usuario (cedula,nombre,correo,password) values ("1115", "Raul Ruiz", "rrui@gmail.com", "vriykkt");
+insert into usuario (cedula,nombre,correo,password) values ("1116", "Sebastian Jaramillo", "sejaramillo@gmail.com", "444yb");
+insert into usuario (cedula,nombre,correo,password) values ("1117", "Camilo Mesa", "camesa@gmail.com", "ynuj5b");
+insert into usuario (cedula,nombre,correo,password) values ("1118", "Jose Vanegas", "jovane@gmail.com", "7iu5h6");
+insert into usuario (cedula,nombre,correo,password) values ("1119", "Laura Garcia", "lgarcia@gmail.com", "vetwr");
+insert into usuario (cedula,nombre,correo,password) values ("1120", "Carolina Gonzales", "carolgo@gmail.com", "8uoi45");

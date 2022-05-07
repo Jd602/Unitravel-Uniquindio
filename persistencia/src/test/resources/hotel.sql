@@ -1,0 +1,1 @@
+insert into hotel values ("Dann","Avenida del Rio", 3);
