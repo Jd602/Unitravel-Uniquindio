@@ -52,7 +52,7 @@ public class CiudadTest {
 
     @Test
     //@Sql("classpath:hotel.sql")
-    public void listarCiurTest()
+    public void listarCiudadTest()
     {
         List<Ciudad> lista = ciudadRepo.findAll();
         System.out.println(lista);

@@ -41,7 +41,7 @@ public class HotelTest {
     }
 
     @Test
-    public void actualizarCiudadTest()
+    public void actualizarHotelTest()
     {
         Hotel hotel = new Hotel("Atlanta","",Estrella.UNA_ESTRELLA);
         Hotel hotelGuardado = hotelRepo.save(hotel);

@@ -34,4 +34,6 @@ public class Foto implements Serializable {
         this.hotel = hotel;
         this.habitacion = habitacion;
     }
+
+
 }

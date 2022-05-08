@@ -6,13 +6,17 @@ import co.edu.uniquindio.unitravel.repositorios.HabitacionRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class HabitacionTest {
 
-    /*
+
     @Autowired
     private HabitacionRepo habitacionRepo;
 
@@ -33,7 +37,7 @@ public class HabitacionTest {
 
         habitacionRepo.delete(habitacionGuardada);
 
-        Habitacion habitacionbuscada = habitacionRepo.findById("A201");//.orElse(null);
+        Habitacion habitacionbuscada = habitacionRepo.findById("A201").orElse(null);
         Assertions.assertNull(habitacionbuscada);
     }
 
@@ -52,10 +56,10 @@ public class HabitacionTest {
     }
 
     @Test
-    //@Sql("classpath:adminhotel.sql")
+    @Sql("classpath:habitacion.sql")
     public void listarHabitacionTest()
     {
         List<Habitacion> lista = habitacionRepo.findAll();
         System.out.println(lista);
-    }*/
+    }
 }

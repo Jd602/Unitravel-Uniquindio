@@ -31,10 +31,8 @@ public class Caracteristica implements Serializable {
     @ManyToMany
     private List<Habitacion> habitaciones;
 
-    public Caracteristica(String nombre, String descripcion, List<Hotel> hoteles, List<Habitacion> habitaciones) {
+    public Caracteristica(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.hoteles = hoteles;
-        this.habitaciones = habitaciones;
     }
 }
