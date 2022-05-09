@@ -29,7 +29,7 @@ insert into usuario (cedula,nombre,correo,password) values ("1119", "Laura Garci
 insert into usuario (cedula,nombre,correo,password) values ("1120", "Carolina Gonzales", "carolgo@gmail.com", "8uoi45");
 
 --Ciudades
-insert into ciudad (id,nombre) values (1,"Bogota");
+insert into ciudad (nombre) values ("Bogota");
 insert into ciudad (nombre) values ("Medellin");
 insert into ciudad (nombre) values ("Cali");
 insert into ciudad (nombre) values ("Barranquilla");
@@ -41,7 +41,6 @@ insert into ciudad (nombre) values ("Santa Marta");
 insert into ciudad (nombre) values ("Bucaramanga");
 insert into ciudad (nombre) values ("Cartagena");
 insert into ciudad (nombre) values ("Ibague");
-insert into ciudad (nombre) values ("Popayan");
 insert into ciudad (nombre) values ("Cucuta");
 insert into ciudad (nombre) values ("Yopal");
 insert into ciudad (nombre) values ("Monteria");
@@ -51,8 +50,8 @@ insert into ciudad (nombre) values ("Pasto");
 insert into ciudad (nombre) values ("Florencia");
 
 --Hoteles
-insert into hotel (codigo, nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
-values (1,"Dann","Avenida del Rio", 3,"2111",1);
+insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
+values ("Dann","Avenida del Rio", 3,"2111",1);
 insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
 values ("El Remanso","Avenida del Rio", 2,"2112",2);
 insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
@@ -88,3 +87,13 @@ insert into cama (codigo, tipo) values (1, 1);
 insert into cama ( tipo) values ( 0);
 insert into cama ( tipo) values ( 0);
 insert into cama ( tipo) values ( 1);
+
+--Comentarios
+insert into comentario (codigo, calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
+values (1,3,"Buen servicio pero hay cosas que mejorar","2020-04-30",1,"1115");
+insert into comentario (calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
+values (3,"Buena actitud", "2021-04-07",3,"1118");
+insert into comentario (calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
+values (0,"Pesimo servicio","2021-03-05", 1, "1112");
+insert into comentario (calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
+values (2,"Regular", "2019-11-2", 4,"1116" );
