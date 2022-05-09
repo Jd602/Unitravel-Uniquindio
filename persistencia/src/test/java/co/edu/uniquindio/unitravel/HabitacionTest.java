@@ -18,14 +18,16 @@ public class HabitacionTest {
 
     @Autowired
     private HabitacionRepo habitacionRepo;
-    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
-    private Ciudad ciudad = new Ciudad("city");
-    private Hotel hotel = new Hotel("hotel","dir hotel", Estrella.DOS_ESTRELLAS,adm,ciudad);
+
 
     @Test
     public void registrar()
     {
-        Habitacion habitacion = new Habitacion("A201",140000.00,2,EstadoHabitacion.DISPONIBLE,hotel);
+        AdminHotel adm1 =new AdminHotel("111","admin1","admin1@hotmail.com","123");
+        Ciudad ciudad1 = new Ciudad("city1");
+        Hotel hotel1= new Hotel("hotel1","dir hotel", Estrella.DOS_ESTRELLAS,adm1,ciudad1);
+        Habitacion habitacion = new Habitacion("A201",140000.00,2,
+                EstadoHabitacion.DISPONIBLE,hotel1);
         Habitacion habitacionGuardada = habitacionRepo.save(habitacion);
 
         Assertions.assertNotNull(habitacionGuardada);
@@ -34,7 +36,11 @@ public class HabitacionTest {
     @Test
     public void eliminarHabitacionTest()
     {
-        Habitacion habitacion = new Habitacion("A201",140000.00,2,EstadoHabitacion.DISPONIBLE,hotel);
+        AdminHotel adm2 =new AdminHotel("112","admin2","admin2@hotmail.com","123");
+        Ciudad ciudad2 = new Ciudad("city2");
+        Hotel hotel2= new Hotel("hotel2","dir hotel", Estrella.DOS_ESTRELLAS,adm2,ciudad2);
+        Habitacion habitacion = new Habitacion("A201",140000.00,2,
+                EstadoHabitacion.DISPONIBLE,hotel2);
         Habitacion habitacionGuardada = habitacionRepo.save(habitacion);
 
         habitacionRepo.delete(habitacionGuardada);
@@ -46,7 +52,11 @@ public class HabitacionTest {
     @Test
     public void actualizarHabitacionTest()
     {
-        Habitacion habitacion = new Habitacion("A115", 190000.00, 3, EstadoHabitacion.DISPONIBLE,hotel);
+        AdminHotel adm3 =new AdminHotel("113","admin3","admin3@hotmail.com","123");
+        Ciudad ciudad3 = new Ciudad("city3");
+        Hotel hotel3= new Hotel("hotel3","dir hotel", Estrella.TRES_ESTRELLAS,adm3,ciudad3);
+        Habitacion habitacion = new Habitacion("A115", 190000.00, 3,
+                EstadoHabitacion.DISPONIBLE,hotel3);
         Habitacion habitacionGuardada = habitacionRepo.save(habitacion);
 
         habitacionGuardada.setEstado(EstadoHabitacion.NO_DISPONIBLE);

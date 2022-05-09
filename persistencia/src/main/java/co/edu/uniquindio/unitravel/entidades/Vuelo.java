@@ -12,19 +12,23 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true)
 public class Vuelo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
+    @ToString.Include
     private int codigo;
 
 
     @JoinColumn(nullable = false)
+    @ToString.Include
     private EstadoVuelo estado;
 
 
     @Column(nullable = false,length = 30,unique = true)
+    @ToString.Include
     private String aerolinea;
 
     @OneToMany(mappedBy = "vuelo")
@@ -33,16 +37,17 @@ public class Vuelo implements Serializable {
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @ToString.Include
     private Ciudad origen;
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @ToString.Include
     private Ciudad destino;
 
-    public Vuelo(EstadoVuelo estado, String aerolinea, List<Silla> sillas, Ciudad origen, Ciudad destino) {
+    public Vuelo(EstadoVuelo estado, String aerolinea,  Ciudad origen, Ciudad destino) {
         this.estado = estado;
         this.aerolinea = aerolinea;
-        this.sillas = sillas;
         this.origen = origen;
         this.destino = destino;
     }

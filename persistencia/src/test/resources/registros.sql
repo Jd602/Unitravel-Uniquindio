@@ -41,6 +41,7 @@ insert into ciudad (nombre) values ("Santa Marta");
 insert into ciudad (nombre) values ("Bucaramanga");
 insert into ciudad (nombre) values ("Cartagena");
 insert into ciudad (nombre) values ("Ibague");
+insert into ciudad (nombre) values ("Popayan");
 insert into ciudad (nombre) values ("Cucuta");
 insert into ciudad (nombre) values ("Yopal");
 insert into ciudad (nombre) values ("Monteria");
@@ -50,15 +51,15 @@ insert into ciudad (nombre) values ("Pasto");
 insert into ciudad (nombre) values ("Florencia");
 
 --Hoteles
-insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
+insert into hotel (nombre,direccion, num_estrellas,administrador_cedula,ciudad_id)
 values ("Dann","Avenida del Rio", 3,"2111",1);
-insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
+insert into hotel (nombre,direccion, num_estrellas,administrador_cedula,ciudad_id)
 values ("El Remanso","Avenida del Rio", 2,"2112",2);
-insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
+insert into hotel (nombre,direccion, num_estrellas,administrador_cedula,ciudad_id)
 values ("Estelar","Avenida del Rio", 4,"2113",3);
-insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
+insert into hotel (nombre,direccion, num_estrellas,administrador_cedula,ciudad_id)
 values ("El Parque","Avenida del Rio", 2,"2114",4);
-insert into hotel (nombre, direccion, num_estrellas,administrador_cedula,ciudad_id)
+insert into hotel (nombre,direccion, num_estrellas,administrador_cedula,ciudad_id)
 values ("Hollywood","Avenida del Rio", 1,"2115",5);
 
 --Habitaciones
@@ -74,26 +75,49 @@ insert into Habitacion (numero, precio, capacidad, estado,hotel_codigo) values("
 insert into Habitacion (numero, precio, capacidad, estado,hotel_codigo) values("A303",120000.00,0,0,5);
 
 --Fotos
-insert into foto (codigo, url, habitacion_numero, hotel_codigo) values (1, "enlacefoto.png","A101",1 );
+insert into foto (url, habitacion_numero, hotel_codigo) values ("enlacefoto.png","A101",1 );
 insert into foto ( url, habitacion_numero, hotel_codigo) values ( "enlacefoto2.png", "A102",2);
 
 --Características
-insert into caracteristica (codigo,nombre, descripcion) values (1,"Piscina doble", "Importante para el entretenimiento");
+insert into caracteristica (nombre, descripcion) values ("Piscina doble", "Importante para el entretenimiento");
 insert into caracteristica (nombre, descripcion) values ("Luz fluorescente", "Para la comodidad");
 insert into caracteristica (nombre, descripcion) values ("Tv smart", "Importante para el entretenimiento");
 
 --Camas
-insert into cama (codigo, tipo) values (1, 1);
+insert into cama ( tipo) values ( 1);
 insert into cama ( tipo) values ( 0);
 insert into cama ( tipo) values ( 0);
 insert into cama ( tipo) values ( 1);
 
 --Comentarios
-insert into comentario (codigo, calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
-values (1,3,"Buen servicio pero hay cosas que mejorar","2020-04-30",1,"1115");
 insert into comentario (calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
-values (3,"Buena actitud", "2021-04-07",3,"1118");
+values (3, "Buena actitud", "2020-02-13", 1, "1113");
 insert into comentario (calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
-values (0,"Pesimo servicio","2021-03-05", 1, "1112");
+values (0,"Pesimo servicio", "2018-05-25", 2, "1116");
 insert into comentario (calificacion, contenido, fecha, hotel_codigo, usuario_cedula)
-values (2,"Regular", "2019-11-2", 4,"1116" );
+values (2, "Regular","2021-08-30", 3, "1114");
+
+--Reservas
+insert into reserva (fecha, fecha_inicio, fecha_fin, estado, precio_total,cantidad_personas, usuario_cedula)
+values ("2022-05-02","2022-05-03","2022-05-12",0,354000.00,2,"1120");
+insert into reserva (fecha, fecha_inicio, fecha_fin, estado, precio_total,cantidad_personas, usuario_cedula)
+values ("2022-05-02","2022-05-13","2022-05-16",2,1130000.00,3,"1117");
+insert into reserva (fecha, fecha_inicio, fecha_fin, estado, precio_total,cantidad_personas, usuario_cedula)
+values ("2022-05-03","2022-05-05","2022-05-07",0,150000.00,1,"1119");
+
+--Vuelos
+insert into vuelo (estado,aerolinea,origen_id,destinod_id)
+values(4,"LAN",1,6);
+insert into vuelo (estado,aerolinea,origen_id,destinod_id)
+values(1,"Avianca",2,3);
+insert into vuelo (estado,aerolinea,origen_id,destinod_id)
+values(2,"Avianca",5,1);
+insert into vuelo (estado,aerolinea,origen_id,destinod_id)
+values(0,"EasyFly",7,2);
+
+--Sillas
+insert into silla (posicion, precio ,vuelo_codigo) values ("A22P",180000.00,1);
+insert into silla (posicion, precio ,vuelo_codigo) values ("B35V",145000.00,2);
+insert into silla (posicion, precio ,vuelo_codigo) values ("A12P",180000.00,2);
+insert into silla (posicion, precio ,vuelo_codigo) values ("C41V",128000.00,1);
+insert into silla (posicion, precio ,vuelo_codigo) values ("B27P",145000.00,1);

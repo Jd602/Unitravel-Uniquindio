@@ -22,27 +22,24 @@ public class Comentario implements Serializable {
     private int codigo;
 
     @Column(nullable = false)
-    @EqualsAndHashCode.Include
     @ToString.Include
     private String contenido;
 
     @JoinColumn(nullable = false)
-    @EqualsAndHashCode.Include
     @ToString.Include
     private Estrella calificacion;
 
     @Column(nullable = false)
-    @EqualsAndHashCode.Include
     @ToString.Include
     private LocalDate fecha;
 
     @ManyToOne
-    @EqualsAndHashCode.Include
+    @JoinColumn(nullable = false)
     @ToString.Include
     private Hotel hotel;
 
     @ManyToOne
-    @EqualsAndHashCode.Include
+    @JoinColumn(nullable = false)
     @ToString.Include
     private Usuario usuario;
 

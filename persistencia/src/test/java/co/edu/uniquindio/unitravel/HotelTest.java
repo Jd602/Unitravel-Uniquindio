@@ -20,15 +20,16 @@ public class HotelTest {
 
     @Autowired
     private HotelRepo hotelRepo;
-
+    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
+    private Ciudad ciudad = new Ciudad("city");
 
     @Test
     public void registrarHotel()
     {
-        AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
-        Ciudad ciudad1 = new Ciudad("city");
-        Hotel hotel1 = new Hotel("hotel 1", "calle 1", Estrella.DOS_ESTRELLAS,adm,ciudad1);
-        Hotel hotelGuardado = hotelRepo.save(hotel1);
+        AdminHotel adm =new AdminHotel("11","admin1","admin1@hotmail.com","123");
+        Ciudad ciudad = new Ciudad("city1");
+        Hotel hotel = new Hotel("hotel1", "calle 1", Estrella.DOS_ESTRELLAS,adm,ciudad);
+        Hotel hotelGuardado = hotelRepo.save(hotel);
 
         Assertions.assertNotNull(hotelGuardado);
     }
@@ -37,9 +38,9 @@ public class HotelTest {
     public void eliminarHotel()
     {
         AdminHotel adm =new AdminHotel("112","admin2","admin2@hotmail.com","123");
-        Ciudad ciudad2 = new Ciudad("city2");
-        Hotel hotel2 = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad2);
-        Hotel hotelGuardado = hotelRepo.save(hotel2);
+        Ciudad ciudad = new Ciudad("city2");
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+        Hotel hotelGuardado = hotelRepo.save(hotel);
 
         hotelRepo.delete(hotelGuardado);
 
@@ -50,10 +51,10 @@ public class HotelTest {
     @Test
     public void actualizarHotelTest()
     {
-        AdminHotel adm =new AdminHotel("113","admrin","admrin@hotmail.com","123");
-        Ciudad ciudad3 = new Ciudad("city3");
-        Hotel hotel3 = new Hotel("Atlanta","",Estrella.UNA_ESTRELLA,adm,ciudad3);
-        Hotel hotelGuardado = hotelRepo.save(hotel3);
+        AdminHotel adm =new AdminHotel("113","admin3","admin3@hotmail.com","123");
+        Ciudad ciudad = new Ciudad("city3");
+        Hotel hotel = new Hotel("Atlanta","",Estrella.UNA_ESTRELLA,adm,ciudad);
+        Hotel hotelGuardado = hotelRepo.save(hotel);
 
         hotelGuardado.setNombre("Atlanta");
 

@@ -12,32 +12,36 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true)
 public class Silla implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ToString.Include
     private int codigo;
 
     @Column(nullable = false,length = 5,unique = true)
+    @ToString.Include
     private String posicion;
 
     @Column(nullable = false,precision = 8,scale = 2)
+    @ToString.Include
     private Double precio;
 
 
     @OneToMany(mappedBy = "silla")
-    //@JoinColumn(nullable = false)
+    //@JoinColumn(nullable = true)
     private List<ReservaSilla> reservasSilla;
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @ToString.Include
     private Vuelo vuelo;
 
-    public Silla(String posicion, Double precio, List<ReservaSilla> reservasSilla, Vuelo vuelo) {
+    public Silla(String posicion, Double precio, Vuelo vuelo) {
         this.posicion = posicion;
         this.precio = precio;
-        this.reservasSilla = reservasSilla;
         this.vuelo = vuelo;
     }
 }

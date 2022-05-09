@@ -15,47 +15,56 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true)
 public class Reserva implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ToString.Include
     private int codigo;
 
     @Column(nullable = false)
+    @ToString.Include
     private LocalDate fecha;
 
     @FutureOrPresent
     @Column(nullable = false)
+    @ToString.Include
     private LocalDate fechaInicio;
 
     @Future
     @Column(nullable = false)
+    @ToString.Include
     private LocalDate fechaFin;
 
     @Column(nullable = false)
+    @ToString.Include
     private EstadoReserva estado;
 
     @Column(nullable = false,precision = 8,scale = 2)
+    @ToString.Include
     private Double precioTotal;
 
     @Column(nullable=false)
+    @ToString.Include
     private int cantidadPersonas;
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @ToString.Include
     private Usuario usuario;
 
     @OneToMany(mappedBy = "reserva")
-    //@JoinColumn(nullable = false)
+    //@JoinColumn(nullable = true)
     private List<ReservaSilla> reservasSilla;
 
     @OneToMany(mappedBy = "reserva")
+    //@JoinColumn(nullable = true)
     private List<ReservaHabitacion> reservas;
 
     public Reserva(LocalDate fecha, LocalDate fechaInicio, LocalDate fechaFin, EstadoReserva estado,
-                   Double precioTotal, int cantidadPersonas, Usuario usuario, List<ReservaSilla> reservasSilla,
-                   List<ReservaHabitacion> reservas) {
+                   Double precioTotal, int cantidadPersonas, Usuario usuario) {
         this.fecha = fecha;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -63,8 +72,6 @@ public class Reserva implements Serializable {
         this.precioTotal = precioTotal;
         this.cantidadPersonas = cantidadPersonas;
         this.usuario = usuario;
-        this.reservasSilla = reservasSilla;
-        this.reservas = reservas;
     }
 }
 

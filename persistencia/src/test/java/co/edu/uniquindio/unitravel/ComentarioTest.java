@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
-import java.time.Clock;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,19 +18,18 @@ public class ComentarioTest {
 
     @Autowired
     private ComentarioRepo comentarioRepo;
-
+    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
+    private Ciudad ciudad = new Ciudad("city");
 
     @Test
     public void registrarComentarioTest()
     {
-        AdminHotel adm1 =new AdminHotel("11","admin","admin@hotmail.com","123");
-        Ciudad ciudad1 = new Ciudad("city");
-        Hotel hotel1 = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm1,ciudad1);
-        Usuario usuario1 = new Usuario("4444", "Esteban", "est@hotmail.com", "123456");
-        LocalDate fecha1 = LocalDate.parse("2021-05-29");
-        Comentario comentario1 = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha1, hotel1, usuario1);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+        Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
+        LocalDate fecha = LocalDate.parse("03-04-2022");
+        Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
 
-        Comentario comentarioGuardado = comentarioRepo.save(comentario1);
+        Comentario comentarioGuardado = comentarioRepo.save(comentario);
 
         Assertions.assertNotNull(comentarioGuardado);
     }
@@ -39,28 +37,22 @@ public class ComentarioTest {
     @Test
     public void eliminarComentarioTest()
     {
-        AdminHotel adm =new AdminHotel("12","asd","1@hotmail.com","123");
-        Ciudad ciudad = new Ciudad("city2");
         Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
         Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
-        LocalDate fecha = LocalDate.parse("2022-04-12");
+        LocalDate fecha = LocalDate.parse("03-04-2022");
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
 
         Comentario comentarioGuardado = comentarioRepo.save(comentario);
-        System.out.println("1 "+comentario);
 
         comentarioRepo.delete(comentarioGuardado);
-
     }
 
     @Test
     public void actualizarComentarioTest()
     {
-        AdminHotel adm =new AdminHotel("13","adfdmin","admin2@hotmail.com","123");
-        Ciudad ciudad = new Ciudad("city3");
         Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
         Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
-        LocalDate fecha = LocalDate.parse("2022-07-10");
+        LocalDate fecha = LocalDate.parse("03-04-2022");
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
 
         Comentario comentarioGuardado = comentarioRepo.save(comentario);
@@ -69,6 +61,7 @@ public class ComentarioTest {
         comentarioGuardado.setCalificacion(Estrella.CUATRO_ESTRELLAS);
 
         comentarioRepo.save(comentarioGuardado);
+
     }
 
     @Test
