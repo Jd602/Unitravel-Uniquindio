@@ -54,7 +54,7 @@ public class AdminHotelTest {
     }
 
     @Test
-    @Sql("classpath:adminhotel.sql")
+    @Sql("classpath:registros.sql")
     public void listarUsuariosTest()
     {
         List<AdminHotel> lista = adminHotelRepo.findAll();

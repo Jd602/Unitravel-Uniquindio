@@ -38,7 +38,7 @@ public class Habitacion implements Serializable {
     private EstadoHabitacion estado;
 
     @ManyToOne
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable = false)
     private Hotel hotel;
 
     @ManyToMany
@@ -53,10 +53,11 @@ public class Habitacion implements Serializable {
     @ManyToMany(mappedBy = "habitaciones")
     private List<Cama> camas;
 
-    public Habitacion(String numero, Double precio, int capacidad, EstadoHabitacion estado) {
+    public Habitacion(String numero, Double precio, int capacidad, EstadoHabitacion estado,Hotel hotel) {
         this.numero = numero;
         this.precio = precio;
         this.capacidad = capacidad;
         this.estado = estado;
+        this.hotel = hotel;
     }
 }

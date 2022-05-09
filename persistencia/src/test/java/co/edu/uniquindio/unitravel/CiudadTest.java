@@ -51,7 +51,7 @@ public class CiudadTest {
     }
 
     @Test
-    //@Sql("classpath:hotel.sql")
+    @Sql("classpath:registros.sql")
     public void listarCiudadTest()
     {
         List<Ciudad> lista = ciudadRepo.findAll();

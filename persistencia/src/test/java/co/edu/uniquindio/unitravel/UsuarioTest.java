@@ -54,7 +54,7 @@ public class UsuarioTest {
     }
 
     @Test
-    @Sql("classpath:usuario.sql")
+    @Sql("classpath:registros.sql")
     public void listarUsuariosTest()
     {
         List<Usuario> lista = usuarioRepo.findAll();

@@ -54,7 +54,7 @@ public class AdministradorTest {
     }
 
     @Test
-    @Sql("classpath:administrador.sql")
+    @Sql("classpath:registros.sql")
     public void listarAdministradorTest()
     {
         List<Administrador> lista = administradorRepo.findAll();

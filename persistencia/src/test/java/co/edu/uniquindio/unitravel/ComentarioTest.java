@@ -18,11 +18,13 @@ public class ComentarioTest {
 
     @Autowired
     private ComentarioRepo comentarioRepo;
+    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
+    private Ciudad ciudad = new Ciudad("city");
 
     @Test
     public void registrarComentarioTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
         Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
         LocalDate fecha = LocalDate.parse("03-04-2022");
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
@@ -35,7 +37,7 @@ public class ComentarioTest {
     @Test
     public void eliminarComentarioTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
         Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
         LocalDate fecha = LocalDate.parse("03-04-2022");
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
@@ -48,7 +50,7 @@ public class ComentarioTest {
     @Test
     public void actualizarComentarioTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
         Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
         LocalDate fecha = LocalDate.parse("03-04-2022");
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);

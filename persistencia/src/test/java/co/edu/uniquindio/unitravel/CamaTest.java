@@ -51,7 +51,7 @@ public class CamaTest {
     }
 
     @Test
-    @Sql("classpath:cama.sql")
+    @Sql("classpath:registros.sql")
     public void listarCamaTest()
     {
         List<Cama> lista = camaRepo.findAll();

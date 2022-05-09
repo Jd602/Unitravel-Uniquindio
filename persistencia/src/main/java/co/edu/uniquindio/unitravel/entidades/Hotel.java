@@ -34,10 +34,13 @@ public class Hotel implements Serializable {
     private Estrella numEstrellas;
 
     @ManyToOne
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable = false)
+    @ToString.Include
     private AdminHotel administrador;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
+    @ToString.Include
     private Ciudad ciudad;
 
     @OneToMany(mappedBy = "hotel")
@@ -52,9 +55,11 @@ public class Hotel implements Serializable {
     @OneToMany(mappedBy = "hotel")
     private List<Comentario> comentarios;
 
-    public Hotel(String nombre, String direccion, Estrella numEstrellas) {
+    public Hotel(String nombre, String direccion, Estrella numEstrellas, AdminHotel administrador, Ciudad ciudad) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.numEstrellas = numEstrellas;
+        this.administrador = administrador;
+        this.ciudad = ciudad;
     }
 }

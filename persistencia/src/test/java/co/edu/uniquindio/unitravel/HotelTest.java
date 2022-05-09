@@ -1,5 +1,7 @@
 package co.edu.uniquindio.unitravel;
 
+import co.edu.uniquindio.unitravel.entidades.AdminHotel;
+import co.edu.uniquindio.unitravel.entidades.Ciudad;
 import co.edu.uniquindio.unitravel.entidades.Estrella;
 import co.edu.uniquindio.unitravel.entidades.Hotel;
 import co.edu.uniquindio.unitravel.repositorios.HotelRepo;
@@ -18,11 +20,13 @@ public class HotelTest {
 
     @Autowired
     private HotelRepo hotelRepo;
+    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
+    private Ciudad ciudad = new Ciudad("city");
 
     @Test
     public void registrarHotel()
     {
-        Hotel hotel = new Hotel("hotel1", "calle 1", Estrella.DOS_ESTRELLAS);
+        Hotel hotel = new Hotel("hotel1", "calle 1", Estrella.DOS_ESTRELLAS,adm,ciudad);
         Hotel hotelGuardado = hotelRepo.save(hotel);
 
         Assertions.assertNotNull(hotelGuardado);
@@ -31,7 +35,7 @@ public class HotelTest {
     @Test
     public void eliminarHotel()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
         Hotel hotelGuardado = hotelRepo.save(hotel);
 
         hotelRepo.delete(hotelGuardado);
@@ -43,7 +47,7 @@ public class HotelTest {
     @Test
     public void actualizarHotelTest()
     {
-        Hotel hotel = new Hotel("Atlanta","",Estrella.UNA_ESTRELLA);
+        Hotel hotel = new Hotel("Atlanta","",Estrella.UNA_ESTRELLA,adm,ciudad);
         Hotel hotelGuardado = hotelRepo.save(hotel);
 
         hotelGuardado.setNombre("Atlanta");
@@ -52,7 +56,7 @@ public class HotelTest {
     }
 
     @Test
-    @Sql("classpath:hotel.sql")
+    @Sql("classpath:registros.sql")
     public void listarHotelTest()
     {
         List<Hotel> lista = hotelRepo.findAll();

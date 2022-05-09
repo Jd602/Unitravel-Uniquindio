@@ -17,12 +17,17 @@ public class FotoTest {
 
     @Autowired
     private FotoRepo fotoRepo;
+    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
+    private Ciudad ciudad = new Ciudad("city");
+    private Hotel hotel = new Hotel("hotel","dir hotel", Estrella.DOS_ESTRELLAS,adm,ciudad);
+    private Habitacion room = new Habitacion("A202",90000.00,0,EstadoHabitacion.DISPONIBLE,hotel);
+
 
     @Test
     public void registrarFotoTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS);
-        Habitacion habitacion = new Habitacion("A201",140000.00,2, EstadoHabitacion.DISPONIBLE);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+        Habitacion habitacion = new Habitacion("A201",140000.00,2, EstadoHabitacion.DISPONIBLE,hotel);
 
         Foto foto = new Foto("https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg",
                 hotel, habitacion);
@@ -35,8 +40,8 @@ public class FotoTest {
     @Test
     public void eliminarFotoTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS);
-        Habitacion habitacion = new Habitacion("A201",140000.00,2, EstadoHabitacion.DISPONIBLE);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+        Habitacion habitacion = new Habitacion("A201",140000.00,2, EstadoHabitacion.DISPONIBLE,hotel);
 
         Foto foto = new Foto("https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg",
                 hotel, habitacion);
@@ -49,8 +54,8 @@ public class FotoTest {
     @Test
     public void actualizarFotoTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS);
-        Habitacion habitacion = new Habitacion("A201",140000.00,2, EstadoHabitacion.DISPONIBLE);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+        Habitacion habitacion = new Habitacion("A201",140000.00,2, EstadoHabitacion.DISPONIBLE,hotel);
 
         Foto foto = new Foto("https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg",
                 hotel, habitacion);
@@ -64,7 +69,7 @@ public class FotoTest {
     }
 
     @Test
-    @Sql("classpath:foto.sql")
+    @Sql("classpath:registros.sql")
     public void listarFotoTest()
     {
         List<Foto> lista = fotoRepo.findAll();
