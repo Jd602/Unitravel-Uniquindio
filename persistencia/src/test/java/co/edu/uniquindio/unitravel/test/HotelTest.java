@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unitravel;
+package co.edu.uniquindio.unitravel.test;
 
 import co.edu.uniquindio.unitravel.entidades.AdminHotel;
 import co.edu.uniquindio.unitravel.entidades.Ciudad;
@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
+import javax.persistence.Transient;
 import java.util.List;
 
 @DataJpaTest

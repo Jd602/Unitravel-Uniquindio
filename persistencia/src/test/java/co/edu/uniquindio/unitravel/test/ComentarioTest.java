@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unitravel;
+package co.edu.uniquindio.unitravel.test;
 
 import co.edu.uniquindio.unitravel.entidades.*;
 import co.edu.uniquindio.unitravel.repositorios.ComentarioRepo;
