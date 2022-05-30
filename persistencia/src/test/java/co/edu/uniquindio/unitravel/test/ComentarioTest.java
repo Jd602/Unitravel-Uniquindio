@@ -1,7 +1,7 @@
 package co.edu.uniquindio.unitravel.test;
 
 import co.edu.uniquindio.unitravel.entidades.*;
-import co.edu.uniquindio.unitravel.repositorios.ComentarioRepo;
+import co.edu.uniquindio.unitravel.repositorios.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +18,24 @@ public class ComentarioTest {
 
     @Autowired
     private ComentarioRepo comentarioRepo;
-    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
-    private Ciudad ciudad = new Ciudad("city");
+    @Autowired
+    private AdminHotelRepo adminHotelRepo;
+    @Autowired
+    private CiudadRepo ciudadRepo;
+    @Autowired
+    private HotelRepo hotelRepo;
+    @Autowired
+    private UsuarioRepo usuarioRepo;
+
 
     @Test
     public void registrarComentarioTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
-        Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
-        LocalDate fecha = LocalDate.parse("03-04-2022");
+        LocalDate fecha = insertarFecha();
+        Hotel hotel=insertarHotel();
+        Usuario usuario=insertarUsuario();
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
+        comentario.setCodigo(1);
 
         Comentario comentarioGuardado = comentarioRepo.save(comentario);
 
@@ -37,9 +45,9 @@ public class ComentarioTest {
     @Test
     public void eliminarComentarioTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
-        Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
-        LocalDate fecha = LocalDate.parse("03-04-2022");
+        Hotel hotel = insertarHotel();
+        Usuario usuario = insertarUsuario();
+        LocalDate fecha = insertarFecha();
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
 
         Comentario comentarioGuardado = comentarioRepo.save(comentario);
@@ -50,9 +58,9 @@ public class ComentarioTest {
     @Test
     public void actualizarComentarioTest()
     {
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
-        Usuario usuario = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com", "123456");
-        LocalDate fecha = LocalDate.parse("03-04-2022");
+        LocalDate fecha=insertarFecha();
+        Hotel hotel=insertarHotel();
+        Usuario usuario=insertarUsuario();
         Comentario comentario = new Comentario("Mala atención", Estrella.DOS_ESTRELLAS, fecha, hotel, usuario);
 
         Comentario comentarioGuardado = comentarioRepo.save(comentario);
@@ -70,5 +78,35 @@ public class ComentarioTest {
     {
         List<Comentario> lista = comentarioRepo.findAll();
         System.out.println(lista);
+    }
+
+    @Test
+    public LocalDate insertarFecha()
+    {
+        LocalDate fecha = LocalDate.parse("2022-02-21");
+        return fecha;
+    }
+
+    @Test
+    public Hotel insertarHotel()
+    {
+        AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
+        adminHotelRepo.save(adm);
+        Ciudad ciudad = new Ciudad("city");
+        ciudadRepo.save(ciudad);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+        hotelRepo.save(hotel);
+
+        return hotel;
+    }
+
+    @Test
+    public Usuario insertarUsuario()
+    {
+        Usuario user = new Usuario("1010118570", "Esteban", "es.tola2010@hotmail.com",
+                "123456");
+        usuarioRepo.save(user);
+
+        return user;
     }
 }

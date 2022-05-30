@@ -52,15 +52,12 @@ public class Reserva implements Serializable {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    @ToString.Include
     private Usuario usuario;
 
     @OneToMany(mappedBy = "reserva")
-    //@JoinColumn(nullable = true)
     private List<ReservaSilla> reservasSilla;
 
     @OneToMany(mappedBy = "reserva")
-    //@JoinColumn(nullable = true)
     private List<ReservaHabitacion> reservas;
 
     public Reserva(LocalDate fecha, LocalDate fechaInicio, LocalDate fechaFin, EstadoReserva estado,

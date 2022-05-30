@@ -13,17 +13,13 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(callSuper = true,onlyExplicitlyIncluded = true)
 public class AdminHotel extends Persona implements Serializable {
 
-    @Column(nullable = true)
     private LocalDate fechaIngreso;
 
-    @Column(nullable = true)
     private LocalDate fechaRetiro;
 
-    @Column(nullable = true)
     @ToString.Include
     private Estado estado;
 

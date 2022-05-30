@@ -23,7 +23,6 @@ public class Cama implements Serializable {
     private TipoCama tipo;
 
     @ManyToMany
-    @JoinColumn(nullable = true)
     private List<Habitacion> habitaciones;
 
     public Cama(TipoCama tipo) {

@@ -4,6 +4,8 @@ import co.edu.uniquindio.unitravel.entidades.AdminHotel;
 import co.edu.uniquindio.unitravel.entidades.Ciudad;
 import co.edu.uniquindio.unitravel.entidades.Estrella;
 import co.edu.uniquindio.unitravel.entidades.Hotel;
+import co.edu.uniquindio.unitravel.repositorios.AdminHotelRepo;
+import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import co.edu.uniquindio.unitravel.repositorios.HotelRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,14 +23,23 @@ public class HotelTest {
 
     @Autowired
     private HotelRepo hotelRepo;
-    private AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
-    private Ciudad ciudad = new Ciudad("city");
+
+    @Autowired
+    private AdminHotelRepo adminHotelRepo;
+
+
+    @Autowired
+    private CiudadRepo ciudadRepo;
 
     @Test
     public void registrarHotel()
     {
         AdminHotel adm =new AdminHotel("11","admin1","admin1@hotmail.com","123");
+        adminHotelRepo.save(adm);
+
         Ciudad ciudad = new Ciudad("city1");
+        ciudadRepo.save(ciudad);
+
         Hotel hotel = new Hotel("hotel1", "calle 1", Estrella.DOS_ESTRELLAS,adm,ciudad);
         Hotel hotelGuardado = hotelRepo.save(hotel);
 
@@ -38,22 +49,31 @@ public class HotelTest {
     @Test
     public void eliminarHotel()
     {
-        AdminHotel adm =new AdminHotel("112","admin2","admin2@hotmail.com","123");
-        Ciudad ciudad = new Ciudad("city2");
-        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+
+        AdminHotel adm =new AdminHotel("11","admin1","admin1@hotmail.com","123");
+        adminHotelRepo.save(adm);
+
+        Ciudad ciudad = new Ciudad("city1");
+        ciudadRepo.save(ciudad);
+
+        Hotel hotel = new Hotel("hotel1", "calle 1", Estrella.DOS_ESTRELLAS,adm,ciudad);
+        hotel.setCodigo(1);
         Hotel hotelGuardado = hotelRepo.save(hotel);
 
         hotelRepo.delete(hotelGuardado);
 
-        boolean hotelBuscado = hotelRepo.equals("Madrid");
-        Assertions.assertTrue(hotelBuscado);
+        Hotel hotelBorrado = hotelRepo.findById(1).orElse(null);
+
+        Assertions.assertNull(hotelBorrado);
     }
 
     @Test
     public void actualizarHotelTest()
     {
         AdminHotel adm =new AdminHotel("113","admin3","admin3@hotmail.com","123");
+        adminHotelRepo.save(adm);
         Ciudad ciudad = new Ciudad("city3");
+        ciudadRepo.save(ciudad);
         Hotel hotel = new Hotel("Atlanta","",Estrella.UNA_ESTRELLA,adm,ciudad);
         Hotel hotelGuardado = hotelRepo.save(hotel);
 

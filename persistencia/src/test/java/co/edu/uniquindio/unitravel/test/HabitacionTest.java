@@ -1,7 +1,10 @@
 package co.edu.uniquindio.unitravel.test;
 
 import co.edu.uniquindio.unitravel.entidades.*;
+import co.edu.uniquindio.unitravel.repositorios.AdminHotelRepo;
+import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import co.edu.uniquindio.unitravel.repositorios.HabitacionRepo;
+import co.edu.uniquindio.unitravel.repositorios.HotelRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +21,20 @@ public class HabitacionTest {
 
     @Autowired
     private HabitacionRepo habitacionRepo;
+    @Autowired
+    private AdminHotelRepo adminHotelRepo;
+    @Autowired
+    private CiudadRepo ciudadRepo;
+    @Autowired
+    private HotelRepo hotelRepo;
 
 
     @Test
     public void registrar()
     {
-        AdminHotel adm1 =new AdminHotel("111","admin1","admin1@hotmail.com","123");
-        Ciudad ciudad1 = new Ciudad("city1");
-        Hotel hotel1= new Hotel("hotel1","dir hotel", Estrella.DOS_ESTRELLAS,adm1,ciudad1);
+        Hotel hotel = insertarHotel();
         Habitacion habitacion = new Habitacion("A201",140000.00,2,
-                EstadoHabitacion.DISPONIBLE,hotel1);
+                EstadoHabitacion.DISPONIBLE,hotel);
         Habitacion habitacionGuardada = habitacionRepo.save(habitacion);
 
         Assertions.assertNotNull(habitacionGuardada);
@@ -36,11 +43,9 @@ public class HabitacionTest {
     @Test
     public void eliminarHabitacionTest()
     {
-        AdminHotel adm2 =new AdminHotel("112","admin2","admin2@hotmail.com","123");
-        Ciudad ciudad2 = new Ciudad("city2");
-        Hotel hotel2= new Hotel("hotel2","dir hotel", Estrella.DOS_ESTRELLAS,adm2,ciudad2);
+        Hotel hotel = insertarHotel();
         Habitacion habitacion = new Habitacion("A201",140000.00,2,
-                EstadoHabitacion.DISPONIBLE,hotel2);
+                EstadoHabitacion.DISPONIBLE,hotel);
         Habitacion habitacionGuardada = habitacionRepo.save(habitacion);
 
         habitacionRepo.delete(habitacionGuardada);
@@ -52,11 +57,9 @@ public class HabitacionTest {
     @Test
     public void actualizarHabitacionTest()
     {
-        AdminHotel adm3 =new AdminHotel("113","admin3","admin3@hotmail.com","123");
-        Ciudad ciudad3 = new Ciudad("city3");
-        Hotel hotel3= new Hotel("hotel3","dir hotel", Estrella.TRES_ESTRELLAS,adm3,ciudad3);
+        Hotel hotel = insertarHotel();
         Habitacion habitacion = new Habitacion("A115", 190000.00, 3,
-                EstadoHabitacion.DISPONIBLE,hotel3);
+                EstadoHabitacion.DISPONIBLE,hotel);
         Habitacion habitacionGuardada = habitacionRepo.save(habitacion);
 
         habitacionGuardada.setEstado(EstadoHabitacion.NO_DISPONIBLE);
@@ -73,5 +76,18 @@ public class HabitacionTest {
     {
         List<Habitacion> lista = habitacionRepo.findAll();
         System.out.println(lista);
+    }
+
+    @Test
+    public Hotel insertarHotel()
+    {
+        AdminHotel adm =new AdminHotel("11","admin","admin@hotmail.com","123");
+        adminHotelRepo.save(adm);
+        Ciudad ciudad = new Ciudad("city");
+        ciudadRepo.save(ciudad);
+        Hotel hotel = new Hotel("Madrid","calle 2", Estrella.CUATRO_ESTRELLAS,adm,ciudad);
+        hotelRepo.save(hotel);
+
+        return hotel;
     }
 }

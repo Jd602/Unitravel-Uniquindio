@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unitravel.test;
 
 import co.edu.uniquindio.unitravel.entidades.Ciudad;
+import co.edu.uniquindio.unitravel.entidades.Hotel;
 import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -32,11 +33,12 @@ public class CiudadTest {
     {
         Ciudad ciudad = new Ciudad("Madrid");
         Ciudad ciudadGuardada = ciudadRepo.save(ciudad);
-
+        ciudad.setId(1);
         ciudadRepo.delete(ciudadGuardada);
 
-        boolean ciudadBuscada = ciudadRepo.equals("Madrid");
-        Assertions.assertTrue(ciudadBuscada);
+        Ciudad ciudadBorrado = ciudadRepo.findById(1).orElse(null);
+
+        Assertions.assertNull(ciudadBorrado);
     }
 
     @Test

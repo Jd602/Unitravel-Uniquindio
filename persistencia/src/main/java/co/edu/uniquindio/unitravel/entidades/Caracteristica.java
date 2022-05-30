@@ -19,7 +19,7 @@ public class Caracteristica implements Serializable {
     @EqualsAndHashCode.Include
     private int codigo;
 
-    @Column(length =30 )
+    @Column(length=30 )
     private String nombre;
 
     @Column(nullable = false)

@@ -35,7 +35,6 @@ public class Persona implements Serializable {
     private String password;
 
     @ElementCollection
-    @Column(nullable = true)
     private List<String> telefono;
 
     public Persona(String cedula, String nombre, String correo, String password) {

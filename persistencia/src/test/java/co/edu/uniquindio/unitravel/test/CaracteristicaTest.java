@@ -6,6 +6,7 @@ import co.edu.uniquindio.unitravel.entidades.Habitacion;
 import co.edu.uniquindio.unitravel.repositorios.CaracteristicaRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
@@ -16,14 +17,15 @@ import java.util.List;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CaracteristicaTest {
 
+    @Autowired
     CaracteristicaRepo caracteristicaRepo;
 
     @Test
     public void registrarCaracteristicaTest()
     {
-        Caracteristica caracteristica = new Caracteristica("Aire acondicionado",
+        Caracteristica car = new Caracteristica("Aire acondicionado",
                 "Importante para mejorar la experiencia");
-        Caracteristica caracteristicaGuardada = caracteristicaRepo.save(caracteristica);
+        Caracteristica caracteristicaGuardada = caracteristicaRepo.save(car);
 
         Assertions.assertNotNull(caracteristicaGuardada);
     }
@@ -33,6 +35,7 @@ public class CaracteristicaTest {
     {
         Caracteristica caracteristica = new Caracteristica("Aire acondicionado",
                 "Importante para mejorar la experiencia");
+        caracteristica.setCodigo(1);
         Caracteristica caracteristicaGuardada = caracteristicaRepo.save(caracteristica);
 
         caracteristicaRepo.delete(caracteristicaGuardada);
@@ -44,6 +47,7 @@ public class CaracteristicaTest {
     {
         Caracteristica caracteristica = new Caracteristica("Aire acondicionado",
                 "Importante para mejorar la experiencia");
+        caracteristica.setCodigo(1);
         Caracteristica caracteristicaGuardada = caracteristicaRepo.save(caracteristica);
 
         caracteristica.setNombre("Jacuzzi");

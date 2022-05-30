@@ -15,13 +15,13 @@ import java.time.LocalDate;
 @ToString(callSuper = true,onlyExplicitlyIncluded = true)
 public class Administrador extends Persona implements Serializable {
 
-    @Column(nullable = true)
+    //@Column(nullable = false)
     private LocalDate fechaIngreso;
 
-    @Column(nullable = true)
+    //@Column(nullable = false)
     private LocalDate fechaRetiro;
 
-    @Column(nullable = true)
+    //@Column(nullable = false)
     private Estado estado;
 
     public Administrador(String cedula, String nombre, String correo, String password) {

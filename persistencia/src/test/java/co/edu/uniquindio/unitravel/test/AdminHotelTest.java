@@ -1,6 +1,9 @@
 package co.edu.uniquindio.unitravel.test;
 
 import co.edu.uniquindio.unitravel.entidades.AdminHotel;
+import co.edu.uniquindio.unitravel.entidades.Ciudad;
+import co.edu.uniquindio.unitravel.entidades.Estrella;
+import co.edu.uniquindio.unitravel.entidades.Hotel;
 import co.edu.uniquindio.unitravel.repositorios.AdminHotelRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

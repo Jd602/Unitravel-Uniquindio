@@ -12,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(callSuper = true,onlyExplicitlyIncluded = true)
 public class Usuario extends Persona implements Serializable {
 
