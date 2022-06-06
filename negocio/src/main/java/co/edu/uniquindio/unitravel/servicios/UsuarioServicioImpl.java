@@ -1,7 +1,7 @@
 package co.edu.uniquindio.unitravel.servicios;
 
 import co.edu.uniquindio.unitravel.entidades.Usuario;
-import co.edu.uniquindio.unitravel.repositorios.UsuarioRepo;
+import co.edu.uniquindio.unitravel.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +12,24 @@ import java.util.Optional;
 public class UsuarioServicioImpl implements UsuarioServicio{
 
     private UsuarioRepo usuarioRepo;
+    private final ReservaRepo reservaRepo;
+    private final HotelRepo hotelRepo;
+    private final SillaRepo sillaRepo;
+    private final CiudadRepo ciudadRepo;
+    private final ComentarioRepo comentarioRepo;
+    private EmailService emailService;
 
 
-    public UsuarioServicioImpl(UsuarioRepo usarioRepo)
-    {
+    public UsuarioServicioImpl(UsuarioRepo usuarioRepo, ReservaRepo reservaRepo, HotelRepo hotelRepo,
+                               SillaRepo sillaRepo, CiudadRepo ciudadRepo, ComentarioRepo comentarioRepo,
+                               EmailService emailService) {
         this.usuarioRepo = usuarioRepo;
+        this.reservaRepo = reservaRepo;
+        this.hotelRepo = hotelRepo;
+        this.sillaRepo = sillaRepo;
+        this.ciudadRepo = ciudadRepo;
+        this.comentarioRepo = comentarioRepo;
+        this.emailService = emailService;
     }
 
     @Override
