@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CamaRepo extends JpaRepository<Cama, Integer> {
+
 }

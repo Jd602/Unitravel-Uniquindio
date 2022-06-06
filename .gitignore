@@ -1,24 +1,24 @@
 ### Java ###
 *.class
 
-#  Package Files #
+# Package Files #
 *.war
 *.ear
 
 ### Gradle ###
-# Exclude Folder List #
+# Exclurde Folder List #
 build/
 
-# PDT-especific
+# PDT-specific
 .buildpath
 
-### Intellij ###
+### IntelliJ IDEA ###
 *.iml
 *.ipr
 *.iws
-*.idea/
+.idea
 
 /bin
-
-# configuración gradle local
-application.properties
+/.gradle/
+/negocio/src/main/resources/
+/negocio/src/test/resources/

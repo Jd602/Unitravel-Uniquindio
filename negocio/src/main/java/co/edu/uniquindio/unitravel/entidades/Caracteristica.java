@@ -3,40 +3,46 @@ package co.edu.uniquindio.unitravel.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(onlyExplicitlyIncluded = true)
 public class Caracteristica implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @ToString.Include
-    private int codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
-    @Column(length=30 )
-    @ToString.Include
-    private String nombre;
-
-    @Column(nullable = false)
-    @ToString.Include
+    @Column(length = 100, nullable = false)
+    @Size(min = 1, max = 100, message = "El nombre debe tener entre 1 y 100 caracteres")
+    @NotBlank(message = "El nombre no puede estar vacío")
     private String descripcion;
 
-    @ManyToMany
-    private List<Hotel> hoteles;
+    //Variable de tipo inte que solo almacena el numero 1 para hotel y el 2 para
+    @Column(nullable = false, length = 1)
+    private Integer tipo;
 
-    @ManyToMany
-    private List<Habitacion> habitaciones;
+    @ManyToMany(mappedBy = "caracteristicas",cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Hotel> hoteles = new ArrayList<>();
 
-    public Caracteristica(String nombre, String descripcion) {
-        this.nombre = nombre;
+    @ManyToMany(mappedBy = "caracteristicas",cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Habitacion> habitaciones = new ArrayList<>();
+
+    public Caracteristica(String descripcion, Integer tipo) {
         this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.hoteles = new ArrayList<>();
+        this.habitaciones = new ArrayList<>();
     }
 }

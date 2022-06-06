@@ -1,30 +1,21 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.*;
-
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import java.io.Serializable;
-import java.time.LocalDate;
-
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@ToString(callSuper = true,onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+@ToString
 public class Administrador extends Persona implements Serializable {
 
-    //@Column(nullable = false)
-    private LocalDate fechaIngreso;
-
-    //@Column(nullable = false)
-    private LocalDate fechaRetiro;
-
-    //@Column(nullable = false)
-    private Estado estado;
-
-    public Administrador(String cedula, String nombre, String correo, String password) {
-        super(cedula, nombre, correo, password);
+    public Administrador(String cedula, String nombre, @Email String email, String password) {
+        super(cedula, nombre, email, password);
     }
 }

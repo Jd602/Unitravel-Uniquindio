@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-// W3C // DTD XHTML 1.0 Transitional // EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/template.xhtml" >
+    <ui:define name="title">Registro</ui:define>
+    <ui:define name="content">
+
+        <p:card styleClass="card"
+                style="margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%;border: 1px solid black; box-shadow: 0 10px 12px rgba(0, 0, 0, 1);">
+            <f:facet name="title">
+                <a style="color: #0E575D;margin-left: 40%">¡Regístrese!</a>
+            </f:facet>
+                <h:form>
+                    <h:panelGrid columns="3" cellpadding="5" style="width: 100%">
+
+                        <p:outputLabel value="Cedula" for="codigo_u" />
+                        <p:inputText id="codigo_u" value="#{usuarioBean.usuario.cedula}" required="true" style="width: 100%;border: 1px solid black"/>
+                        <p:message for="codigo_u" />
+
+                        <p:outputLabel value="Nombre" for="nombre_u" />
+                        <p:inputText id="nombre_u" value="#{usuarioBean.usuario.nombre}" required="true" style="width: 100%;border: 1px solid black"/>
+                        <p:message for="nombre_u" />
+
+                        <p:outputLabel value="Email" for="email_u" />
+                        <p:inputText id="email_u" type="email" value="#{usuarioBean.usuario.email}" required="true" style="width: 100%;border: 1px solid black"/>
+                        <p:message for="email_u" />
+
+                        <p:outputLabel value="Ciudad " for="ciudad_u" />
+                        <p:selectOneMenu id="ciudad_u" value="#{usuarioBean.usuario.ciudad}" required="true" converter="#{ciudadConverter}" style="width: 100%;border: 1px solid black">
+                            <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true" style="width: 100%;border: 1px solid black"/>
+                            <f:selectItems value="#{usuarioBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}" style="width: 100%;border: 1px solid black"/>
+                        </p:selectOneMenu>
+                        <p:message for="ciudad_u" />
+
+                        <p:outputLabel value="Contraseña" for="password_u" />
+                        <p:password id="password_u" value="#{usuarioBean.usuario.password}" feedback="true" required="true" style="width: 100%;border: 1px solid black"/>
+                        <p:message for="password_u" />
+
+                    </h:panelGrid>
+                    <br/>
+                    <div style="text-align: center">
+                        <p:commandButton value="Registrar usuario" action="#{usuarioBean.registrarUsuario}" update="@form" style="background: #24C5C0;color: #0E575D;border-color: black !important;"/>
+                        <p:growl for="msj_bean"  showDetail="true" />
+                    </div>
+
+                </h:form>
+        </p:card>
+
+    </ui:define>
+</ui:composition>
+</html>

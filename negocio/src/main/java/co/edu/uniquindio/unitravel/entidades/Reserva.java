@@ -1,74 +1,77 @@
 package co.edu.uniquindio.unitravel.entidades;
 
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(onlyExplicitlyIncluded = true)
 public class Reserva implements Serializable {
 
     @Id
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ToString.Include
-    private int codigo;
-
-    @Column(nullable = false)
-    @ToString.Include
-    private LocalDate fecha;
+    @EqualsAndHashCode.Include
+    private Integer codigo;
 
     @FutureOrPresent
     @Column(nullable = false)
-    @ToString.Include
+    private LocalDate fechaReserva;
+
+    @FutureOrPresent
+    @Column(nullable = false)
     private LocalDate fechaInicio;
 
     @Future
     @Column(nullable = false)
-    @ToString.Include
     private LocalDate fechaFin;
 
+    @Column
+    @Positive
+    private double precioTotal;
+
     @Column(nullable = false)
-    @ToString.Include
-    private EstadoReserva estado;
+    private String estado;
 
-    @Column(nullable = false,precision = 8,scale = 2)
-    @ToString.Include
-    private Double precioTotal;
-
-    @Column(nullable=false)
-    @ToString.Include
+    @Column(nullable = false)
+    @Positive
+    @Min(value = 1, message = "El numero de personas debe ser mayor a 0")
     private int cantidadPersonas;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "reserva")
-    private List<ReservaSilla> reservasSilla;
+    @ToString.Exclude
+    private List<ReservaHabitacion> reservaHabitaciones;
 
     @OneToMany(mappedBy = "reserva")
-    private List<ReservaHabitacion> reservas;
+    @ToString.Exclude
+    private List<ReservaSilla> reservaSillas;
 
-    public Reserva(LocalDate fecha, LocalDate fechaInicio, LocalDate fechaFin, EstadoReserva estado,
-                   Double precioTotal, int cantidadPersonas, Usuario usuario) {
-        this.fecha = fecha;
+    @OneToMany(mappedBy = "reserva")
+    @ToString.Exclude
+    private List<HistorialPuntos> historialPuntos;
+
+    public Reserva(LocalDate fechaReserva, LocalDate fechaInicio, LocalDate fechaFin, double precioTotal, String estado, int cantidadPersonas, Usuario usuario) {
+        this.fechaReserva = fechaReserva;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.estado = estado;
         this.precioTotal = precioTotal;
+        this.estado = estado;
         this.cantidadPersonas = cantidadPersonas;
         this.usuario = usuario;
+        this.reservaHabitaciones = new ArrayList<>();
+        this.reservaSillas = new ArrayList<>();
     }
 }
-

@@ -3,15 +3,17 @@ package co.edu.uniquindio.unitravel.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class Cama implements Serializable {
 
     @Id
@@ -19,13 +21,16 @@ public class Cama implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @Column(nullable = false)
-    private TipoCama tipo;
+    @Column(nullable = false, length = 50)
+    @Size(max = 50, message = "El nombre de la cama no puede tener mas de 50 caracteres")
+    private String tipo;
 
-    @ManyToMany
-    private List<Habitacion> habitaciones;
+    @ManyToMany(mappedBy = "camas")
+    @ToString.Exclude
+    private List<Habitacion> habitaciones = new ArrayList<>();
 
-    public Cama(TipoCama tipo) {
+    public Cama(String tipo) {
         this.tipo = tipo;
+        this.habitaciones = new ArrayList<>();
     }
 }

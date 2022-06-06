@@ -1,39 +1,82 @@
 package co.edu.uniquindio.unitravel.servicios;
 
-import co.edu.uniquindio.unitravel.entidades.Comentario;
-import co.edu.uniquindio.unitravel.entidades.Hotel;
-import co.edu.uniquindio.unitravel.entidades.Reserva;
-import co.edu.uniquindio.unitravel.entidades.Usuario;
-import org.springframework.transaction.annotation.Transactional;
-
+import co.edu.uniquindio.unitravel.dto.ComentarioDTO;
+import co.edu.uniquindio.unitravel.dto.ReservasTotalesDTO;
+import co.edu.uniquindio.unitravel.entidades.*;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UsuarioServicio {
 
     Usuario registrarUsuario(Usuario usuario) throws Exception;
 
+    Usuario buscarPorEmail(String email);
+
+    List<Usuario> listarPorNombre(String nombre);
+
+    List<Reserva> listarReservasCorreo(String email) throws Exception;
+
+    List<ComentarioDTO> obtenerComentarios();
+
+    List<ReservasTotalesDTO> obtenerReservasTotales();
+
+    List<Telefono> obtenerTelefonosU(String cedula) throws Exception;
+
     Usuario actualizarUsuario(Usuario usuario) throws Exception;
 
-    Usuario obtenerUsuario(String codigo);
+    Usuario obtenerUsuario(String codigo) throws Exception;
 
-    void eliminarUsuario(String cedula) throws Exception;
+    Comentario registrarComentario(Comentario c) throws  Exception;
 
-    List<Usuario> listarUsuarios();
+    Comentario actualizarComentario(Comentario c, int idComentario) throws Exception;
 
-    Usuario validarLogin(String correo, String password) throws Exception;
+    void eliminarComentario(int id) throws Exception;
 
-    Reserva realizarReserva(Hotel h, Reserva r, Usuario u, int cantidadSillas) throws Exception;
+    Comentario obtenerComentario(int id) throws Exception;
 
-    void eliminarReserva(int codigoReserva) throws Exception;
+    List<Comentario> listarComentarios();
 
-    Reserva obtenerReserva(int codigoReserva) throws Exception;
-    Reserva actualizarReserva(Reserva r) throws Exception;
-    List<Reserva> listarReservas();
+    void eliminarUsuario(String codigo) throws Exception;
 
-    List<Hotel> listarHotelesPorCiudad(String nombreCiudad) throws Exception;
+    List<Usuario> obtenerUsuarios();
 
-    Comentario agregarComentario(Comentario c) throws Exception;
+    List<Usuario> obtenerUsuariosCiudad(String nombreCiudad);
 
-    void recuperarPassword(String email) throws Exception;
+    List<Reserva> listarReservasUsuario(String cedula) throws Exception;
 
+    Reserva hacerReserva(Reserva r) throws Exception;
+
+    List<Habitacion> listarHabitacionesDisponibles (LocalDate fechaInicio, LocalDate fechaFin, String ciudad) throws Exception;
+
+    void eliminarReserva(int id) throws Exception;
+
+    Reserva modificarReserva(String cedula, Reserva r) throws Exception;
+
+    Reserva obtenerReserva(int id) throws Exception;
+
+    List<Reserva> obtenerReservas(String emailU);
+
+    List<Hotel> buscarHotelesCiudad(String nombreCiudad) throws Exception;
+
+    List<Hotel> buscarHotelesNombre(String nombre);
+
+    Habitacion buscarHabitacion(int codigo) throws Exception;
+
+    List<HistorialPuntos> listarPuntosUsuario(String cedula) throws Exception;
+
+    List<HistorialPuntos> listarPuntosActivos(String cedula) throws Exception;
+
+    List<HistorialPuntos> listarPuntosVencidos(String cedula) throws Exception;
+
+    HistorialPuntos agregarPuntos(String cedula, Reserva r) throws Exception;
+
+    ReservaHabitacion obtenerReservaHabitacion(int id) throws Exception;
+
+    ReservaHabitacion reservarHabitacion(Reserva r, Habitacion h) throws Exception;
+
+    void modificarReservaHabitacion(ReservaHabitacion rh, Habitacion h) throws Exception;
+
+    ReservaSilla registrarReservaSilla(int idReserva,Silla silla,String idVuelo) throws Exception;
+
+    List<Hotel> listarHoteles() ;
 }

@@ -4,15 +4,19 @@ import co.edu.uniquindio.unitravel.entidades.Habitacion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@ToString
 public class ReservaDTO {
 
     private String nombreUsuario;
-    private LocalDate fechaReserva;
-    private String nombreHotel;
+
+    private LocalDateTime fechaReserva;
+
+    private Habitacion habitacion;
 }

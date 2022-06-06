@@ -3,45 +3,47 @@ package co.edu.uniquindio.unitravel.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @NoArgsConstructor
-@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(onlyExplicitlyIncluded = true)
+@ToString
 public class Silla implements Serializable {
 
     @Id
+    @Column(length = 5)
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ToString.Include
-    private int codigo;
+    private String codigo;
 
-    @Column(nullable = false,length = 5,unique = true)
-    @ToString.Include
+    @Column(nullable = false, length = 5)
+    @NotBlank
+    @Size(max = 5, min = 5, message = "El codigo debe tener 5 caracteres")
     private String posicion;
 
-    @Column(nullable = false,precision = 8,scale = 2)
-    @ToString.Include
+    @Column(nullable = false)
+    @Positive
+
     private Double precio;
 
-
-    @OneToMany(mappedBy = "silla")
-    //@JoinColumn(nullable = true)
-    private List<ReservaSilla> reservasSilla;
-
     @ManyToOne
-    @JoinColumn(nullable = false)
-    @ToString.Include
     private Vuelo vuelo;
 
-    public Silla(String posicion, Double precio, Vuelo vuelo) {
+    @OneToMany(mappedBy = "silla")
+    @ToString.Exclude
+    private List<ReservaSilla> reservasSillas;
+
+    public Silla(String posicion, @NonNull Double precio,Vuelo vuelo) {
         this.posicion = posicion;
         this.precio = precio;
-        this.vuelo = vuelo;
+        this.vuelo = new Vuelo();
+        this.reservasSillas = new ArrayList<>();
     }
 }

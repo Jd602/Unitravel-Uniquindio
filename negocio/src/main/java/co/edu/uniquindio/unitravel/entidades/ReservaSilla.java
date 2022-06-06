@@ -3,35 +3,35 @@ package co.edu.uniquindio.unitravel.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class ReservaSilla implements Serializable {
 
     @Id
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
+    @EqualsAndHashCode.Include
+    private Integer codigo;
 
-    @Column(nullable = false,precision = 8,scale = 2)
+    @Column(nullable = false)
+    @Positive
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-    private Reserva reserva;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
     private Silla silla;
 
-    public ReservaSilla(Double precio, Reserva reserva, Silla silla) {
+    @ManyToOne
+    private Reserva reserva;
+
+    public ReservaSilla(Double precio, Silla silla, Reserva reserva) {
         this.precio = precio;
-        this.reserva = reserva;
         this.silla = silla;
+        this.reserva = reserva;
     }
 }

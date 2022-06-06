@@ -1,63 +1,65 @@
 package co.edu.uniquindio.unitravel.entidades;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(onlyExplicitlyIncluded = true)
-public class Habitacion implements Serializable {
+@ToString
+public class Habitacion implements Serializable{
 
     @Id
-    @Column(length = 5)
-    @ToString.Include
-    private String numero;
+    @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
-    @Column(precision = 8,scale = 2,nullable = false)
-    @ToString.Include
-    private Double precio;
+    @Positive
+    @Min(50000)
+    private double precio;
 
-    @Min(1)
-    @Max(8)
-    @Column(nullable = false)
-    @ToString.Include
+    @Positive
+    @Min(value = 1, message = "La capacidad de la habitacion debe ser mayor a 0")
     private int capacidad;
 
-
-    @ToString.Include
-    @JoinColumn(nullable = false)
-    private EstadoHabitacion estado;
-
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Hotel hotel;
 
     @ManyToMany
+    @ToString.Exclude
     private List<Caracteristica> caracteristicas;
 
-    @OneToMany(mappedBy = "habitacion")
-    private List<Foto> fotos;
-
-    @OneToMany(mappedBy = "habitacion")
-    private List<ReservaHabitacion> reservas;
-
-    @ManyToMany(mappedBy = "habitaciones")
+    @ManyToMany
+    @ToString.Exclude
     private List<Cama> camas;
 
-    public Habitacion(String numero, Double precio, int capacidad, EstadoHabitacion estado,Hotel hotel) {
-        this.numero = numero;
+    @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<String> imagenes = new ArrayList<String>();
+
+    public Habitacion( double precio, int capacidad, Hotel hotel) {
         this.precio = precio;
         this.capacidad = capacidad;
-        this.estado = estado;
         this.hotel = hotel;
+        this.caracteristicas = new ArrayList<>();
+        this.camas = new ArrayList<>();
+        this.imagenes = new ArrayList<>();
+    }
+
+    public String getImagenPrincipal() {
+        if (imagenes.size() > 0) {
+            return imagenes.get(0);
+        }
+        return "predeterminada.png";
     }
 }

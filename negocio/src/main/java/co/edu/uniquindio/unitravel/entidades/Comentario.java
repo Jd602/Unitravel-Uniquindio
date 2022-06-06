@@ -1,53 +1,57 @@
 package co.edu.uniquindio.unitravel.entidades;
 
+import jdk.jfr.Timestamp;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(onlyExplicitlyIncluded = true)
 public class Comentario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, length = 11, unique = true)
     @EqualsAndHashCode.Include
-    @ToString.Include
-    private int codigo;
+    private Integer codigo;
+    @Column(length = 500, nullable = false)
+    @Size(max = 500, message = "El comentario no puede tener mas de 500 caracteres")
+    @NotBlank(message = "El comentario no puede estar vacio")
+    private String comentario;
+
+    @Column(length = 500)
+    @Size(max = 500, message = "La respuesta no puede tener mas de 500 caracteres")
+    @NotBlank(message = "La respuesta no puede estar vacia")
+    private String respuesta;
 
     @Column(nullable = false)
-    @ToString.Include
-    private String contenido;
+    private int calificacion;
 
-    @JoinColumn(nullable = false)
-    @ToString.Include
-    private Estrella calificacion;
-
+    @FutureOrPresent(message = "La fecha debe ser mayor o igual a la actual")
     @Column(nullable = false)
-    @ToString.Include
-    private LocalDate fecha;
+    private LocalDateTime fecha_calificacion;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-    @ToString.Include
-    private Hotel hotel;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    @ToString.Include
     private Usuario usuario;
 
-    public Comentario(String contenido, Estrella calificacion, LocalDate fecha, Hotel hotel, Usuario usuario) {
-        this.contenido = contenido;
+    @ManyToOne
+    private Hotel hotel;
+
+    public Comentario( String comentario, int calificacion, Usuario usuario, Hotel hotel) {
+        this.comentario = comentario;
         this.calificacion = calificacion;
-        this.fecha = fecha;
-        this.hotel = hotel;
+        this.fecha_calificacion = LocalDateTime.now();
         this.usuario = usuario;
+        this.hotel = hotel;
     }
 }

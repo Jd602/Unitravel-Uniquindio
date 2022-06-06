@@ -13,9 +13,9 @@ public class EmailService {
     @Autowired
     private JavaMailSender sender;
 
-    public boolean enviarEmail(String asunto, String contenido, String destinatario){
-        MimeMessage mensaje=sender.createMimeMessage();
-        MimeMessageHelper helper= new MimeMessageHelper(mensaje);
+    public boolean enviarEmail(String asunto,String contenido,String destinatario){
+        MimeMessage mensaje = sender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mensaje);
 
         try {
             helper.setText(contenido,true);
@@ -26,9 +26,11 @@ public class EmailService {
 
             return true;
 
-        }catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
+
         return false;
+
     }
 }

@@ -1,46 +1,46 @@
 package co.edu.uniquindio.unitravel.entidades;
 
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
-
-
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NoArgsConstructor
-@AllArgsConstructor
-@MappedSuperclass
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 @ToString
+@AllArgsConstructor
 public class Persona implements Serializable {
 
-    @Id
-    @EqualsAndHashCode.Include
-    @Column(length=15,updatable = false)
-    private String cedula;
+   @Id
+   @EqualsAndHashCode.Include
+   @Column(length = 11)
+   @Size(max = 11, message = "El número de documento debe tener 11 dígitos")
+   @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+   @NotBlank(message = "Debe de escribir su cedula")
+   private String cedula;
 
-    @Column (length=50,updatable = false,nullable = false)
-    private String nombre;
+   @Column(length = 100, nullable = false)
+   @Size(max = 100, message = "El nombre debe tener máximo 100 caracteres")
+   @NotBlank(message = "Debe de escribir su nombre")
+   private String nombre;
 
-    @Email
-    @Column (length=30,unique = true,nullable = false)
-    private String correo;
+   @Email(message = "El correo electrónico no es válido")
+   @Column(length = 150, nullable = false, unique = true)
+   @Size(max = 150, message = "El correo electrónico debe tener máximo 150 caracteres")
+   @NotBlank(message = "Debe de escribir su correo electrónico")
+   private String email;
 
-    @Column(length=10,nullable = false)
-    private String password;
+   @Column(length = 50, nullable = false)
+   @Size(max = 50, message = "El password debe tener máximo 50 caracteres")
+   @NotBlank(message = "Debe de escribir su password")
+   private String password;
 
-    @ElementCollection
-    private List<String> telefono;
-
-    public Persona(String cedula, String nombre, String correo, String password) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.password = password;
-    }
 }
