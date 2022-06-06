@@ -18,9 +18,10 @@ public class CaracteristicaServicioImpl implements CaracterirsticaServicio{
 
 
     @Override
-    public void crearCaracteristica(Caracteristica c) {
+    public Caracteristica crearCaracteristica(Caracteristica c) {
 
          caracteristicaRepo.save(c);
+        return c;
     }
 
     @Override

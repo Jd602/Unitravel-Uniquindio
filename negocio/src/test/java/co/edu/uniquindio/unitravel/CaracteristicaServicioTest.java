@@ -80,3 +80,4 @@ public class CaracteristicaServicioTest {
         lista.forEach(System.out::println);
     }
 }
+

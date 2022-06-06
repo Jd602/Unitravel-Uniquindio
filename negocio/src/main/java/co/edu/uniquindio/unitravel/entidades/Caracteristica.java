@@ -24,7 +24,7 @@ public class Caracteristica implements Serializable {
 
     @Column(length = 100, nullable = false)
     @Size(min = 1, max = 100, message = "El nombre debe tener entre 1 y 100 caracteres")
-    @NotBlank(message = "El nombre no puede estar vacío")
+    @NotBlank(message = "El nombre no puede estar vacio")
     private String descripcion;
 
     //Variable de tipo inte que solo almacena el numero 1 para hotel y el 2 para
