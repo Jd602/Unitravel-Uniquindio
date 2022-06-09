@@ -13,7 +13,7 @@
         <p:card styleClass="card"
                 style="margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%;border: 1px solid black; box-shadow: 0 10px 12px rgba(0, 0, 0, 1);">
             <f:facet name="title">
-                <a style="color: #0E575D;margin-left: 40%">NUEVO USUARIO</a>
+                <a style="color: black;margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%">NUEVO USUARIO </a>
             </f:facet>
                 <h:form>
                     <h:panelGrid columns="3" cellpadding="5" style="width: 100%">
@@ -44,7 +44,7 @@
                     </h:panelGrid>
                     <br/>
                     <div style="text-align: center">
-                        <p:commandButton value="Registrar usuario" action="#{usuarioBean.registrarUsuario}" update="@form" style="background: #24C5C0;color: #0E575D;border-color: black !important;"/>
+                        <p:commandButton value="Registrar usuario" action="#{usuarioBean.registrarUsuario}" update="@form" style="background: #1185B0;color: #000000;border-color: black !important;" icon="pi pi-user-plus" />
                         <p:growl for="msj_bean"  showDetail="true" />
                     </div>
 

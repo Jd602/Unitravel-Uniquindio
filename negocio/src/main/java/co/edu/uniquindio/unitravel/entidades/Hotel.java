@@ -43,7 +43,7 @@ public class Hotel implements Serializable {
     private String telefono;
 
     @Positive
-    @Max(value = 5, message = "El numero de estrellas debe ser menor o igual a 5")
+    @Max(value = 5, message = "El numero de estrellas debe ser entre 1 y 5")
     @ToString.Include
     @Column(nullable = false)
     private int numEstrellas;

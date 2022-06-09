@@ -7,13 +7,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/template.xhtml" >
-    <ui:define name="title">Registro Hotel</ui:define>
+    <ui:define name="title">Actualizar Hotel</ui:define>
     <ui:define name="content">
 
         <p:card styleClass="card"
                 style="margin-left: 30%; margin-right: 30%; margin-top: 2%; margin-bottom: 2%;border: 1px solid black; box-shadow: 0 10px 12px rgba(0, 0, 0, 1);">
             <f:facet name="title">
-                <a style="color: #0E575D;margin-left: 33%">REGISTRAR HOTEL</a>
+                <a style="color: #0E575D;margin-left: 33%">ACTUALIZAR HOTEL</a>
             </f:facet>
             <h:form >
 
@@ -65,7 +65,7 @@
                         <p:outputLabel for="num_estrellas" value="Numero de estrellas: "/>
                     </div>
                     <div class="col">
-                        <p:inputText id="num_estrellas" type="number" value="#{hotelBean.hotel.numEstrellas}" required="true" style="width: 90%;border: 1px solid black"/>
+                        <p:inputText id="num_estrellas" type="number" value="#{hotelBean.hotel.numEstrellas}"  required="true" style="width: 90%;border: 1px solid black"/>
                         <p:message for="num_estrellas" />
                     </div>
                 </div>
@@ -106,12 +106,12 @@
                 </div>
                 <br/>
 
-                <p:commandButton value="Adicionar habitacion" onclick="PF('crear_hab').show()" icon="pi pi-plus" style="background: #24C5C0;color: #0E575D;border-color: black !important;" />
+                <p:commandButton value="Adicionar habitacion" onclick="PF('crear_hab').show()" icon="pi pi-plus" style="background: #1185B0;color: #000000;border-color: black !important;" />
                 <br/>
                 <br/>
 
                 <div style="text-align: center">
-                    <p:commandButton value="Crear Hotel" action="#{hotelBean.registrarHotel()}" update="@form" style="background: #24C5C0;color: #0E575D;border-color: black !important;"/>
+                    <p:commandButton value="Crear Hotel" action="#{hotelBean.registrarHotel()}" update="@form" style="background: #1185B0;color: #000000;border-color: black !important;"/>
                     <p:growl for="msj_bean"  showDetail="true" />
                 </div>
             </h:form>
@@ -122,7 +122,7 @@
         <p:dialog widgetVar="crear_hab" modal="true" showEffect="fade" draggable="false" style="border: 1px solid black">
 
             <div style="text-align: center">
-                <h4 style="color: #0E575D;">Registrar habitaciones</h4>
+                <h4 style="color: #000000;">Registrar habitaciones</h4>
             </div>
             <br/>
             <h:form>
@@ -186,7 +186,7 @@
 
                 <div style="text-align: center">
                     <p:commandButton value="Crear Habitacion" action="#{hotelBean.registrarHabitacion()}" update="@form"
-                                     style="background: #24C5C0;color: #0E575D;border-color: black !important;"/>
+                                     style="background: #1185B0;color: #0E575D;border-color: black !important;"/>
                     <p:growl for="msj_bean"  showDetail="true" />
                 </div>
             </h:form>

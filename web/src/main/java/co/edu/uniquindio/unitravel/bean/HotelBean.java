@@ -44,7 +44,7 @@ public class HotelBean implements Serializable{
     private List<Cama> camas;
 
     @Value("${upload.url}")
-    private String urlImagenenes;
+    private String urlImagenes;
 
     private ArrayList<String> imagenesHotel;
 
@@ -92,11 +92,11 @@ public class HotelBean implements Serializable{
 
                     return "index?faces-redirect=true";
                 } else {
-                    FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Debe subir al menos una imagen");
+                    FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Por favor cargue al menos una foto del hotel");
                     FacesContext.getCurrentInstance().addMessage("msj_bean", ms);
                 }
             }else{
-                FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "El hotel debe tener al menos una habitacion");
+                FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "El hotel debe tener al menos una habitación");
                 FacesContext.getCurrentInstance().addMessage("msj_bean", ms);
             }
         } catch (Exception e) {
@@ -124,7 +124,7 @@ public class HotelBean implements Serializable{
 
     public String subirImagen(UploadedFile imagen){
         try {
-            File archivo = new File(urlImagenenes +"/"+ imagen.getFileName());
+            File archivo = new File(urlImagenes +"/"+ imagen.getFileName());
             OutputStream outputStream = new FileOutputStream(archivo);
             IOUtils.copy(imagen.getInputStream(), outputStream );
             return imagen.getFileName();
@@ -141,6 +141,11 @@ public class HotelBean implements Serializable{
 
             habitacion = new Habitacion();
             imagenesHabitacion = new ArrayList<>();
+            try {
+                administradorHotelServicio.crearHabitacion(habitacion);
+            }catch (Exception e) {
+                
+            }
         } else {
             FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Debe subir al menos una imagen");
             FacesContext.getCurrentInstance().addMessage("msj_bean", ms);
