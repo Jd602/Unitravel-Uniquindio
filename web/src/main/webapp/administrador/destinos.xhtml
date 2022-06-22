@@ -9,7 +9,49 @@
 <ui:composition template="/WEB-INF/template.xhtml" >
     <ui:define name="title">destinos</ui:define>
     <ui:define name="content">
-        <h1>Gestionar destinos</h1>
+        <div class="card">
+            <h3>Gestionar destinos</h3>
+            <p:panelGrid columns="3" layout="grid" styleClass="showcase-text-align-center">
+
+                    <p:column styleClass="ui-grid-col-12">
+                        <p:commandButton value="Ingresar destino" onclick="PF('crear_c').show()"  styleClass="p-mr-2" style="width: auto;margin-left: 30px"/>
+
+
+                        <p:dialog widgetVar="crear_c" modal="true" showEffect="fade" draggable="false" style="border: 1px solid black">
+
+                            <div style="text-align: center">
+                                <h4 style="color: #0E575D;">Registrar destino</h4>
+                            </div>
+                            <br/>
+                            <h:form>
+
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p:outputLabel for="nombre_c" value="Destino: "/>
+                                    </div>
+                                    <div class="col">
+                                        <p:inputText id="nombre_c" type="text" value="#{hotelBean.habitacion.capacidad}" required="true" style="border: 1px solid black"/>
+                                        <p:message for="nombre_c" />
+                                    </div>
+                                </div>
+                                <br/>
+                                <div style="text-align: center">
+                                    <p:commandButton value="Registrar" action="#{hotelBean.registrarHabitacion()}" update="@form"
+                                                     style="background: #0E575D;color: #000000;border-color: black !important;"/>
+                                    <p:growl for="msj_bean"  showDetail="true" />
+                                </div>
+
+                            </h:form>
+
+                        </p:dialog>
+
+
+                        <p:commandButton value="Actualizar destino" styleClass="p-mr-2" style="width: auto;margin-left: 30px"/>
+                        <p:commandButton value="Consultar destino" style="width: auto;margin-left: 30px" />
+                    </p:column>
+
+            </p:panelGrid>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

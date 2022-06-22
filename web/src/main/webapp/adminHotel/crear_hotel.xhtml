@@ -65,7 +65,9 @@
                         <p:outputLabel for="num_estrellas" value="Numero de estrellas: "/>
                     </div>
                     <div class="col">
-                        <p:inputText id="num_estrellas" type="number" value="#{hotelBean.hotel.numEstrellas}" required="true" style="width: 90%;border: 1px solid black"/>
+                        <p:inputText id="num_estrellas" type="number" value="#{hotelBean.hotel.numEstrellas}" required="true" style="width: 90%;border: 1px solid black">
+                            <f:validateLongRange maximum="5" minimum="1" />
+                        </p:inputText>
                         <p:message for="num_estrellas" />
                     </div>
                 </div>

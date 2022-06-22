@@ -13,7 +13,6 @@
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
     <h:outputScript library="js" name="bootstrap.bundle.min.js"/>
-    <script src="https://kit.fontawesome.com/64e66804a5.js" crossorigin="anonymous"></script>
 
     <title>Unitravel | <ui:insert name="title">Plantilla</ui:insert></title>
 </h:head>
@@ -52,11 +51,19 @@
                                     <i class="pi pi-users d-block mx-auto mb-1 icon-menu" ></i>admins</a>
                             </li>
 
-                            <li class="nav-item" jsf:rendered="#{seguridadBean.rol=='usuario'}">
-                                <a class="nav-link active" aria-current="page" href="/usuario/mis_reservas.xhtml">
-                                    Mis reservas
-                                </a>
+                            <li class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small"
+                                jsf:rendered="#{seguridadBean.rol=='usuario'}">
+                                <a href="/usuario/hacer_reserva.xhtml" class="nav-link text-active">
+                                    <i class="pi pi-calendar d-block mx-auto mb-1 icon-menu" ></i>Hacer reservación</a>
+                                <a href="/usuario/mis_reservas.xhtml" class="nav-link text-active">
+                                    <i class="pi pi-bars d-block mx-auto mb-1 icon-menu" ></i>Mis reservas</a>
+                                <a href="/usuario/hacer_comentario.xhtml" class="nav-link text-active">
+                                    <i class="pi pi-file d-block mx-auto mb-1 icon-menu" ></i>Crear comentario </a>
+                                <a href="/usuario/calificar_hotel.xhtml" class="nav-link text-active">
+                                    <i class="pi pi-thumbs-up d-block mx-auto mb-1 icon-menu" ></i>Calificar hotel </a>
+
                             </li>
+
 
                         </ul>
 

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unitravel.bean;
 import co.edu.uniquindio.unitravel.entidades.*;
 import co.edu.uniquindio.unitravel.servicios.AdministradorHotelServicio;
+import co.edu.uniquindio.unitravel.servicios.AdministradorServicio;
 import co.edu.uniquindio.unitravel.servicios.UnitravelServicio;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,11 @@ public class HotelBean implements Serializable{
     @Getter @Setter
     private Hotel hotel;
 
+    @Autowired
+    private AdministradorServicio administradorServicio;
+
+    @Getter @Setter
+    private Ciudad ciudad;
     @Getter @Setter
     private Habitacion habitacion;
 
@@ -144,11 +150,45 @@ public class HotelBean implements Serializable{
             try {
                 administradorHotelServicio.crearHabitacion(habitacion);
             }catch (Exception e) {
-                
+                e.printStackTrace();
             }
         } else {
             FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Debe subir al menos una imagen");
             FacesContext.getCurrentInstance().addMessage("msj_bean", ms);
         }
     }
+
+
+    public void ingresarDestino1() {
+        if(ciudad.getNombre().length()>3){
+
+
+            habitacion = new Habitacion();
+            imagenesHabitacion = new ArrayList<>();
+            try {
+                administradorHotelServicio.crearHabitacion(habitacion);
+            }catch (Exception e) {
+
+            }
+        } else {
+            FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Debe subir al menos una imagen");
+            FacesContext.getCurrentInstance().addMessage("msj_bean", ms);
+        }
+    }
+
+    public void ingresarDestino(){
+
+        String nombre=ciudad.getNombre();
+        try{
+            if (nombre.length()>0) {
+
+                Ciudad c = new Ciudad(nombre);
+                administradorServicio.registrarCiudad(c);
+            } else {
+                FacesMessage ms = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Por favor indique una ciudad válida");
+                FacesContext.getCurrentInstance().addMessage("msj_bean", ms);}
+            } catch (Exception e){
+            }
+        }
+
 }
