@@ -36,7 +36,7 @@
                     <p:message for="ciudad_h" />
 
                     <p:outputLabel for="num_estrellas" value="Numero de estrellas: "/>
-                    <p:inputText id="num_estrellas" type="number" value="#{hotelBean.hotel.numEstrellas}" required="true"/>
+                    <p:inputNumber id="num_estrellas" min="1" max="5" value="#{hotelBean.hotel.numEstrellas}" required="true"/>
                     <p:message for="num_estrellas" />
 
                     <p:outputLabel for="tel_h" value="Telefono: "/>

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ComentarioServicio {
 
-    void ingresarComentario(Comentario c, Hotel hotel, Usuario u);
+    void ingresarComentario(String c, int calificacion, Hotel hotel, Usuario u);
 
     void actualizarComentario(Comentario c,int codigoComentario) throws  Exception;
 

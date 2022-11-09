@@ -24,13 +24,12 @@ public class ComentarioServicioImpl implements ComentarioServicio{
 
 
     @Override
-    public void ingresarComentario(Comentario c,Hotel h, Usuario u){
-        c.setFecha_calificacion(LocalDateTime.now());
-        c.setHotel(h);
-        c.setUsuario(u);
-        h.getComentarios().add(c);
-        u.getComentarios().add(c);
-        comentarioRepo.save(c);
+    public void ingresarComentario(String c,int calificacion, Hotel h, Usuario u){
+        Comentario comment = new Comentario(c, calificacion, u, h);
+        comment.setFecha_calificacion(LocalDateTime.now());
+        h.getComentarios().add(comment);
+        u.getComentarios().add(comment);
+        comentarioRepo.save(comment);
         hotelRepo.save(h);
         usuarioRepo.save(u);
 

@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -169,7 +170,8 @@ public class UsuarioServicoTest {
         try {
             Usuario u = usuarioServicio.obtenerUsuario("1");
             Hotel h = unitravelServicio.obtenerHotel(1);
-            Comentario comentario = new Comentario("Me encanta el hotel", 4, LocalDate.now(), u, h);
+            Comentario comentario = new Comentario("Me encanta el hotel", 4, u, h);
+            comentario.setFecha_calificacion(LocalDateTime.now());
             Assertions.assertNotNull(usuarioServicio.registrarComentario(comentario));
         } catch (Exception e) {
             e.printStackTrace();

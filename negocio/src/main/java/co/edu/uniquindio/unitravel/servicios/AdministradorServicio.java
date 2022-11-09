@@ -12,7 +12,7 @@ public interface AdministradorServicio {
 
     List<Administrador> listarAdmins();
 
-    void registrarAdminHotel(AdministradorHotel a);
+    AdministradorHotel registrarAdminHotel(AdministradorHotel a);
 
     void modificarAdminHotel(AdministradorHotel a,String id) throws Exception;
 

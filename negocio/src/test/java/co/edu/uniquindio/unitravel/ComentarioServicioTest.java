@@ -34,19 +34,19 @@ public class ComentarioServicioTest {
     private UnitravelServicio unitravelServicio;
 
     @Test
-    @Sql("classpath:dataset.sql")
+    //@Sql("classpath:dataset.sql")
     public void registrarComentarioTest(){
+
+        LocalDate date = LocalDate.now();
 
         try {
 
-            LocalDate date = LocalDate.parse("2020-01-08");
-
             Usuario usuario= usuarioServicio.obtenerUsuario("1");
             Hotel hotel = unitravelServicio.obtenerHotel(1);
-
-            Comentario comentarioNuevo= new Comentario("Buen hotel",3,date,usuario,hotel);
-
-            Comentario comentarioRegistrado = comentarioServicio.registrarComentario(comentarioNuevo);
+            Comentario comentarioNuevo= new Comentario("Buen hotel",3, usuario,hotel);
+            comentarioServicio.ingresarComentario(comentarioNuevo);
+            Comentario comentarioRegistrado = comentarioServicio.ingresarComentario(comentarioNuevo.getComentario(),
+                    comentarioNuevo.getCalificacion(),hotel,usuario);
 
             Assertions.assertNotNull(comentarioRegistrado);
 

@@ -46,9 +46,11 @@ public class AdministradorServicioImpl implements AdministradorServicio{
     }
 
     @Override
-    public void registrarAdminHotel(AdministradorHotel a){
+    public AdministradorHotel registrarAdminHotel(AdministradorHotel a){
 
         administradorHotelRepo.save(a);
+
+        return a;
     }
 
     @Override
