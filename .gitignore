@@ -19,7 +19,6 @@ build/
 .idea
 
 /bin
-/gradle
 /.gradle/
 
 .DS_Store
