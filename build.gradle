@@ -36,18 +36,29 @@ subprojects{
         implementation 'org.springframework.boot:spring-boot-dependencies:1.5.8.RELEASE'
 
         //implementar aws
-        implementation platform('software.amazon.awssdk:bom:2.15.0')//dependencia AWS
+        //implementation platform('software.amazon.awssdk:bom:2.15.0')//dependencia AWS
 
         // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-elasticbeanstalk
-        implementation group: 'com.amazonaws', name: 'aws-java-sdk-elasticbeanstalk', version: '1.12.334'
+        //implementation group: 'com.amazonaws', name: 'aws-java-sdk-elasticbeanstalk', version: '1.12.334'
 
 
         // https://mvnrepository.com/artifact/software.amazon.awssdk/bom
-        runtimeOnly group: 'software.amazon.awssdk', name: 'bom', version: '2.18.7', ext: 'pom'
+        //runtimeOnly group: 'software.amazon.awssdk', name: 'bom', version: '2.18.7', ext: 'pom'
 
     }
 }
 
-test {
-    useJUnitPlatform()
+bootJar{
+    enabled = false
 }
+
+jar{
+    enabled = true
+}
+
+/*
+    test {
+
+        useJUnitPlatform()
+    }
+*/

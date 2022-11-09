@@ -11,7 +11,7 @@ dependencies {
     // import a BOM
     implementation 'org.springframework.boot:spring-boot-dependencies:1.5.8.RELEASE'
     //implementar aws
-    implementation platform('software.amazon.awssdk:bom:2.15.0')//dependencia AWS
+    //implementation platform('software.amazon.awssdk:bom:2.15.0')
     // https://mvnrepository.com/artifact/software.amazon.awssdk/bom
-    runtimeOnly group: 'software.amazon.awssdk', name: 'bom', version: '2.18.7', ext: 'pom'
+    //runtimeOnly group: 'software.amazon.awssdk', name: 'bom', version: '2.18.7', ext: 'pom'
 }
